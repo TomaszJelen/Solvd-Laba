@@ -4,37 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376a4313-0f2d-4e08-8167-ce79b1292205" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3be428517bcfa70040dcd3a4a55835edd14a4063" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6a312f300e1c79483318283e97d6b1a136bea54c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/7279cfe663c5cafdce7bc108110b1d2454f68a82" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7d7f172427a287f0a0b114e83c35b3eae3d0812f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/b/3be428517bcfa70040dcd3a4a55835edd14a4063" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/a/6a312f300e1c79483318283e97d6b1a136bea54c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/2/7279cfe663c5cafdce7bc108110b1d2454f68a82" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/d/7d7f172427a287f0a0b114e83c35b3eae3d0812f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Company.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/people/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/people/Worker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/product/CarModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/product/Engine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/production/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/production/ProductionLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/laba/solvd/production/Workstation.java" afterDir="false" />
+    <list default="true" id="376a4313-0f2d-4e08-8167-ce79b1292205" name="Changes" comment="Minor structure update">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f8b68daed20379f22f38ef21035e7776c8fb62a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80bbe1962dd140529b746dda14c6514fed798123" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df704ac2bf1d518ea820d82d180f32aa318b1c62" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/b/1ba909f89d032eb9520277caf6e3acd47416b0d1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/c/2cabb939da04d3de3a200bf2b575690e1a16316d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/3/63da482823c4b822bab34596261db7abff073fca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/f/7f8b68daed20379f22f38ef21035e7776c8fb62a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/0/80bbe1962dd140529b746dda14c6514fed798123" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/6/863e0292fd7e9b3e74dafd6cc01f73ba76346482" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/f/df704ac2bf1d518ea820d82d180f32aa318b1c62" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Money.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/ChiefManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/Worker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/product/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Storage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/util/BonusCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/util/OperationsUsingInflation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/sorting/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3be428517bcfa70040dcd3a4a55835edd14a4063" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1ba909f89d032eb9520277caf6e3acd47416b0d1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6a312f300e1c79483318283e97d6b1a136bea54c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cabb939da04d3de3a200bf2b575690e1a16316d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/7279cfe663c5cafdce7bc108110b1d2454f68a82" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/63da482823c4b822bab34596261db7abff073fca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7d7f172427a287f0a0b114e83c35b3eae3d0812f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/b/3be428517bcfa70040dcd3a4a55835edd14a4063" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/863e0292fd7e9b3e74dafd6cc01f73ba76346482" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/a/6a312f300e1c79483318283e97d6b1a136bea54c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/2/7279cfe663c5cafdce7bc108110b1d2454f68a82" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/d/7d7f172427a287f0a0b114e83c35b3eae3d0812f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/organisation/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/people/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/people/Worker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/product/CarModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/product/CarModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/product/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/product/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/production/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/production/ProductionLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/ProductionLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/laba/solvd/production/Workstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Workstation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,55 +85,15 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jenol/Desktop/tmptmp/solvd/factory/src/main/java/solvd/laba/sorting&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="factory" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="factory" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="factory" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="factory" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="solvd.laba.sorting" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,6 +104,30 @@
       <option name="presentableId" value="Default" />
       <updated>1723271494458</updated>
     </task>
+    <task id="LOCAL-00001" summary="Minor structure update">
+      <option name="closed" value="true" />
+      <created>1723791786700</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723791786700</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Minor structure update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor structure update" />
   </component>
 </project>
