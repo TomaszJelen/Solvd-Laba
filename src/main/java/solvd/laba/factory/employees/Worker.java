@@ -1,14 +1,20 @@
 package solvd.laba.factory.employees;
 
-import solvd.laba.factory.Money;
+import java.time.LocalDate;
 
 public class Worker extends Employee {
     private String jobDescription;
+    static double standardBonus;
 
-    public Worker(String name, String surname, int id, String jobDescription) {
+    static {
+        standardBonus = 0.25;
+    }
+
+    public Worker(String name, String surname, int id, LocalDate workingSince, String jobDescription) {
         this.name = name;
         this.surname = surname;
         this.id = id;
+        this.workingSince = workingSince;
         this.jobDescription = jobDescription;
     }
 
@@ -31,8 +37,8 @@ public class Worker extends Employee {
     }
 
     @Override
-    public Money calculateStandardBonus(Money salary) {
-        return new Money(salary.getAmount() * 0.25, salary.getCurrency());
+    public int calculateStandardBonus(int salary) {
+        return (int) (salary * standardBonus);
     }
 
     @Override

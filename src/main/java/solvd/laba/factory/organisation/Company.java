@@ -2,7 +2,7 @@ package solvd.laba.factory.organisation;
 
 import solvd.laba.factory.production.Factory;
 
-public class Company {
+public final class Company {
     private String name;
     private Factory[] factories;
 

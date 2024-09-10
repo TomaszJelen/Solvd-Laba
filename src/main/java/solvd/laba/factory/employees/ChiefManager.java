@@ -1,10 +1,13 @@
 package solvd.laba.factory.employees;
 
-import solvd.laba.factory.Money;
-
 import java.time.LocalDate;
 
 public class ChiefManager extends Manager{
+    static double standardBonus;
+
+    static {
+        standardBonus = 0.7;
+    }
 
     public ChiefManager(String name, String surname, int id, LocalDate workingSince) {
         super(name, surname, id, workingSince);
@@ -16,8 +19,8 @@ public class ChiefManager extends Manager{
     }
 
     @Override
-    public Money calculateStandardBonus(Money salary) {
-        return new Money(salary.getAmount() * 0.7, salary.getCurrency());
+    public int calculateStandardBonus(int salary) {
+        return (int) (salary * standardBonus);
     }
 
     @Override

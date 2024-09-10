@@ -1,9 +1,11 @@
 package solvd.laba.factory.production;
 
+import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.employees.Worker;
-import solvd.laba.factory.Money;
 
-public class Workstation {
+import java.util.Set;
+
+public class Workstation implements EmployeeListing {
     private int id;
     private Worker worker;
 
@@ -27,7 +29,7 @@ public class Workstation {
         this.worker = worker;
     }
 
-    Money calculateSalary() {
+    int calculateSalary() {
         return worker.getSalary();
     }
 
@@ -47,5 +49,10 @@ public class Workstation {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public Set<Employee> workingEmployees() {
+        return Set.of(worker);
     }
 }

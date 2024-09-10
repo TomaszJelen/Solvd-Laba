@@ -2,11 +2,11 @@ package solvd.laba.factory.organisation;
 
 public class Location {
     private int areaSize;
-    private String adress;
+    private String address;
 
-    public Location(int areaSize, String adress) {
+    public Location(int areaSize, String address) {
         this.areaSize = areaSize;
-        this.adress = adress;
+        this.address = address;
     }
 
     public int getAreaSize() {
@@ -17,17 +17,17 @@ public class Location {
         this.areaSize = areaSize;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Site " + adress + " Size: " + areaSize;
+        return "Site " + address + " Size: " + areaSize;
     }
 
     @Override
@@ -36,13 +36,13 @@ public class Location {
         if (!(o instanceof Location location)) return false;
 
         if (areaSize != location.areaSize) return false;
-        return adress.equals(location.adress);
+        return address.equals(location.address);
     }
 
     @Override
     public int hashCode() {
         int result = areaSize;
-        result = 31 * result + adress.hashCode();
+        result = 31 * result + address.hashCode();
         return result;
     }
 }

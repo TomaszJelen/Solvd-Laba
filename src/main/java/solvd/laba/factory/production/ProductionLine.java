@@ -1,27 +1,29 @@
 package solvd.laba.factory.production;
 
+import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.employees.Manager;
-import solvd.laba.factory.product.Product;
-import solvd.laba.factory.Money;
+import solvd.laba.factory.product.CarModel;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class ProductionLine {
+public class ProductionLine implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
     private Manager manager;
     private Workstation[] workstations;
-    private Product product;
-    private int carProduced = 0;
-    private static int totalCarProduced = 0;
+    private CarModel carModel;
+    private int productionLineCarProduced;
+    private static int globalCarProduced = 0;
 
     public ProductionLine(Workstation[] workstations) {
         this.workstations = workstations;
     }
 
-    public ProductionLine(Manager manager, Workstation[] workstations, Product product) {
+    public ProductionLine(Manager manager, Workstation[] workstations, CarModel carModel) {
         this.manager = manager;
         this.workstations = workstations;
-        this.product = product;
+        this.carModel = carModel;
     }
 
     public Manager getManager() {
@@ -40,47 +42,48 @@ public class ProductionLine {
         this.workstations = workstations;
     }
 
-    public Product getProduct() {
-        return product;
+    public CarModel getCarModel() {
+        return carModel;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
     }
 
-    public int getCarProduced() {
-        return carProduced;
+    public int getProductionLineCarProduced() {
+        return productionLineCarProduced;
     }
 
-    public void setCarProduced(int carProduced) {
-        this.carProduced = carProduced;
+    public void setProductionLineCarProduced(int productionLineCarProduced) {
+        this.productionLineCarProduced = productionLineCarProduced;
     }
 
-    public static int getTotalCarProduced() {
-        return totalCarProduced;
+    public static int getGlobalCarProduced() {
+        return globalCarProduced;
     }
 
-    public static void setTotalCarProduced(int totalCarProduced) {
-        ProductionLine.totalCarProduced = totalCarProduced;
+    public static void setGlobalCarProduced(int globalCarProduced) {
+        ProductionLine.globalCarProduced = globalCarProduced;
     }
 
-    Money calculateTotalSalary() {
-        Money totalSalary = new Money(0, "EUR");
+    @Override
+    public int calculateTotalSalary() {
+        int totalSalary = 0;
         for (Workstation workstation : workstations) {
-            totalSalary.add(workstation.calculateSalary());
+            totalSalary += workstation.calculateSalary();
         }
-        totalSalary.add(manager.getSalary());
+        totalSalary += manager.getSalary();
         return totalSalary;
     }
     void produceCar() {
-        carProduced++;
-        totalCarProduced++;
+        productionLineCarProduced++;
+        globalCarProduced++;
         System.out.println("Car has been made");
     }
 
     @Override
     public String toString() {
-        return "Production line managed by: " + manager + "producing: " + product;
+        return "Production line managed by: " + manager + "producing: " + carModel;
     }
 
     @Override
@@ -90,13 +93,28 @@ public class ProductionLine {
 
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
         if (!Arrays.equals(workstations, that.workstations)) return false;
-        return Objects.equals(product, that.product);
+        return Objects.equals(carModel, that.carModel);
     }
 
     @Override
     public int hashCode() {
         int result = Arrays.hashCode(workstations);
-        result = 31 * result + (product != null ? product.hashCode() : 0);
+        result = 31 * result + (carModel != null ? carModel.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Set<Employee> workingEmployees() {
+        Set<Employee> employees = new HashSet<>();
+        for (Workstation workstation : workstations) {
+            employees.addAll(workstation.workingEmployees());
+        }
+        employees.add(manager);
+        return employees;
+    }
+
+    @Override
+    public int calculateTotalIncomeNetto() {
+        return 30 * carModel.getValue();
     }
 }

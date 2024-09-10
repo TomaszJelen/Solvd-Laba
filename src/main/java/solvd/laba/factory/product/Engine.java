@@ -3,9 +3,10 @@ package solvd.laba.factory.product;
 public class Engine extends Product{
     private int power;
 
-    public Engine(String type, int power) {
+    public Engine(String type, int power, int value) {
         this.type = type;
         this.power = power;
+        this.value = value;
     }
 
     public int getPower() {

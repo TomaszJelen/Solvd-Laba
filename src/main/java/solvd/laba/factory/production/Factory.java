@@ -1,20 +1,24 @@
 package solvd.laba.factory.production;
 
+import solvd.laba.factory.employees.ChiefManager;
+import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.organisation.Location;
 import solvd.laba.factory.organisation.Supplier;
 import solvd.laba.factory.employees.Manager;
-import solvd.laba.factory.Money;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class Factory {
+public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
     private Location location;
-    private Manager chiefManager;
+    private ChiefManager chiefManager;
     private ProductionLine[] productionLines;
     private Supplier[] suppliers;
     private LocalDate openingDate;
+    private Storage storage;
 
 
     public Factory(Location location, ProductionLine[] productionLines) {
@@ -28,7 +32,7 @@ public class Factory {
         this.openingDate = openingDate;
     }
 
-    public Factory(Location location, Manager chiefManager, ProductionLine[] productionLines, Supplier[] suppliers, LocalDate openingDate) {
+    public Factory(Location location, ChiefManager chiefManager, ProductionLine[] productionLines, Supplier[] suppliers, LocalDate openingDate) {
         this.location = location;
         this.chiefManager = chiefManager;
         this.productionLines = productionLines;
@@ -48,7 +52,7 @@ public class Factory {
         return chiefManager;
     }
 
-    public void setChiefManager(Manager chiefManager) {
+    public void setChiefManager(ChiefManager chiefManager) {
         this.chiefManager = chiefManager;
     }
 
@@ -76,18 +80,23 @@ public class Factory {
         this.openingDate = openingDate;
     }
 
-    Money calculateTotalSalary() {
-        Money totalSalary = new Money(0, "EUR");
+    public Storage getStorage() { return storage; }
+
+    public void setStorage(Storage storage) { this.storage = storage; }
+
+    @Override
+    public int calculateTotalSalary() {
+        int totalSalary = 0;
         for (ProductionLine productionLine : productionLines) {
-            totalSalary.add(productionLine.calculateTotalSalary());
+            totalSalary += productionLine.calculateTotalSalary();
         }
-        totalSalary.add(chiefManager.getSalary());
+        totalSalary += chiefManager.getSalary();
         return totalSalary;
     }
 
     @Override
     public String toString() {
-        return "Factory at " + location.getAdress();
+        return "Factory at " + location.getAddress();
     }
 
     @Override
@@ -107,5 +116,24 @@ public class Factory {
         result = 31 * result + Arrays.hashCode(productionLines);
         result = 31 * result + (openingDate != null ? openingDate.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Set<Employee> workingEmployees() {
+        Set<Employee> employees = new HashSet<>();
+        for (ProductionLine productionLine : productionLines) {
+            employees.addAll(productionLine.workingEmployees());
+        }
+        employees.add(chiefManager);
+        return employees;
+    }
+
+    @Override
+    public int calculateTotalIncomeNetto() {
+         int income = 0;
+        for (ProductionLine productionLine : productionLines) {
+            income += productionLine.calculateTotalIncomeNetto();
+        }
+        return income;
     }
 }

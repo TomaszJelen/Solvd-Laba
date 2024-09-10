@@ -1,12 +1,13 @@
 package solvd.laba.factory.product;
 
 public class CarModel extends Product {
-    static int numberOfWheels;
+    public static final int standardNumberOfWheels = 4;
     private Engine engine;
 
-    public CarModel(String type, Engine engine) {
+    public CarModel(String type, Engine engine, int value) {
         this.type = type;
         this.engine = engine;
+        this.value = value;
     }
 
     public Engine getEngine() {
@@ -17,10 +18,10 @@ public class CarModel extends Product {
         this.engine = engine;
     }
 
-    public static void declareNumberOfWheels(int number) {
-        numberOfWheels = number;
-        System.out.println("Our company will now create cars with " + numberOfWheels + " wheels!");
-    }
+//    public static void declareNumberOfWheels(int number) {
+//        numberOfWheels = number;
+//        System.out.println("Our company will now create cars with " + numberOfWheels + " wheels!");
+//    }
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package solvd.laba.factory;
 
+import solvd.laba.factory.employees.ChiefManager;
 import solvd.laba.factory.employees.Manager;
 import solvd.laba.factory.employees.Worker;
 import solvd.laba.factory.organisation.Company;
@@ -19,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Let's create Car company with 1 factory");
-        CarModel.declareNumberOfWheels(4);
+//        CarModel.declareNumberOfWheels(4);
 
         System.out.print("Enter factory opening date (yyyy-mm-dd): ");
         LocalDate openingDate;
@@ -28,9 +29,9 @@ public class Main {
             openingDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
         }
 
-        Engine engine = new Engine("Type I", 100);
-        CarModel carModel = new CarModel("T1", engine);
-        Worker worker = new Worker("John", "Doe", 1, "Example of worker");
+        Engine engine = new Engine("Type I", 100, 20000);
+        CarModel carModel = new CarModel("T1", engine, 70000);
+        Worker worker = new Worker("John", "Doe", 1, openingDate, "Example of worker");
         Workstation workstation = new Workstation(1);
         workstation.setWorker(worker);
         Manager manager = new Manager("Jane", "Smith", 10, openingDate);
@@ -38,7 +39,7 @@ public class Main {
 
         Location location = new Location(100000, "Example 1");
         Supplier supplier = new Supplier("Supplies inc.");
-        Manager chiefManager = new Manager("Adam", "Jones", 100, openingDate);
+        ChiefManager chiefManager = new ChiefManager("Adam", "Jones", 100, openingDate);
         Factory factory = new Factory(location, chiefManager, new ProductionLine[]{productionLine},
                 new Supplier[]{supplier}, openingDate);
         Company company = new Company("Car company");

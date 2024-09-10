@@ -1,18 +1,14 @@
 package solvd.laba.factory.employees;
 
-import solvd.laba.factory.Money;
-
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Manager extends Employee {
-    protected LocalDate workingSince;
 
-    public LocalDate getWorkingSince() {
-        return workingSince;
-    }
+    static double standardBonus;
 
-    public void setWorkingSince(LocalDate workingSince) {
-        this.workingSince = workingSince;
+    static {
+        standardBonus = 0.5;
     }
 
     public Manager(String name, String surname, int id, LocalDate workingSince) {
@@ -28,8 +24,8 @@ public class Manager extends Employee {
     }
 
     @Override
-    public Money calculateStandardBonus(Money salary) {
-        return new Money(salary.getAmount() * 0.5, salary.getCurrency());
+    public int calculateStandardBonus(int salary) {
+        return (int) (salary * standardBonus);
     }
 
     @Override
@@ -52,4 +48,5 @@ public class Manager extends Employee {
         result = 31 * result + workingSince.hashCode();
         return result;
     }
+
 }
