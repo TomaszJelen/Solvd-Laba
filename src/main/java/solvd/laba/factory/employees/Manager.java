@@ -4,7 +4,6 @@ import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.exceptions.NegativeBonusException;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 public class Manager extends Employee {
 

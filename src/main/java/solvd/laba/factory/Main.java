@@ -53,7 +53,7 @@ public class Main {
             Company company = new Company("Car company");
             company.setFactories(new Factory[]{factory});
         } catch (Exception e) {
-
+            LOGGER.error(e);
         }
 
     }

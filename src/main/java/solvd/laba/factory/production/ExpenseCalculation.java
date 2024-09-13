@@ -6,5 +6,5 @@ public interface ExpenseCalculation {
     default int calculateTotalYearlyExpense() {
         int salary = calculateTotalExpense();
         return salary * 12;
-    };
+    }
 }

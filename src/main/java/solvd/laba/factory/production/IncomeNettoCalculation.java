@@ -6,5 +6,5 @@ public interface IncomeNettoCalculation {
     default int calculateTotalYearlyIncomeNetto() {
         int salary = calculateTotalIncomeNetto();
         return salary * 12;
-    };
+    }
 }

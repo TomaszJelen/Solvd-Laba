@@ -5,7 +5,7 @@ public interface SalaryCalculation extends ExpenseCalculation {
     default int calculateTotalYearlySalary() {
         int salary = calculateTotalSalary();
         return salary * 12;
-    };
+    }
 
     @Override
     default int calculateTotalExpense() {

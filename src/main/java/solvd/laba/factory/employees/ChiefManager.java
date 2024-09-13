@@ -1,6 +1,5 @@
 package solvd.laba.factory.employees;
 
-import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.exceptions.NegativeBonusException;
 
 import java.time.LocalDate;

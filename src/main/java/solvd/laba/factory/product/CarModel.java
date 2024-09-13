@@ -1,10 +1,9 @@
 package solvd.laba.factory.product;
 
-import solvd.laba.factory.exceptions.NegativeBonusException;
 import solvd.laba.factory.exceptions.NullArgumentException;
 
 public class CarModel extends Product {
-    public static final int standardNumberOfWheels = 4;
+    public static final int STANDARD_NUMBER_OF_WHEELS = 4;
     private Engine engine;
 
     public CarModel(String type, Engine engine, int value) {
@@ -23,11 +22,6 @@ public class CarModel extends Product {
         }
         this.engine = engine;
     }
-
-//    public static void declareNumberOfWheels(int number) {
-//        numberOfWheels = number;
-//        System.out.println("Our company will now create cars with " + numberOfWheels + " wheels!");
-//    }
 
     @Override
     public String toString() {
