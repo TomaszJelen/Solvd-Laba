@@ -1,5 +1,8 @@
 package solvd.laba.factory.organisation;
 
+import solvd.laba.factory.exceptions.InvalidStringException;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+
 public class Location {
     private int areaSize;
     private String address;
@@ -14,6 +17,9 @@ public class Location {
     }
 
     public void setAreaSize(int areaSize) {
+        if (areaSize < 0) {
+            throw new NegativeArgumentException("Size cannot be lower than 0");
+        }
         this.areaSize = areaSize;
     }
 
@@ -22,6 +28,9 @@ public class Location {
     }
 
     public void setAddress(String address) {
+        if (address.isEmpty()) {
+            throw new InvalidStringException("Address should not be empty");
+        }
         this.address = address;
     }
 

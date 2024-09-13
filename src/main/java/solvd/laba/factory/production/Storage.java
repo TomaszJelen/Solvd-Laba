@@ -1,5 +1,6 @@
 package solvd.laba.factory.production;
 
+import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.product.Product;
 
 public class Storage {
@@ -11,6 +12,9 @@ public class Storage {
     }
 
     public void setVolume(int volume) {
+        if (volume < 0) {
+            throw new NegativeArgumentException("Volume cannot be lower than 0");
+        }
         this.volume = volume;
     }
 

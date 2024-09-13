@@ -1,5 +1,7 @@
 package solvd.laba.factory.product;
 
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+
 public abstract class Product {
     protected String type;
 
@@ -10,6 +12,9 @@ public abstract class Product {
     }
 
     public void setValue(int value) {
+        if (value < 0) {
+            throw new NegativeArgumentException("Value cannot be lower than 0");
+        }
         this.value = value;
     }
 

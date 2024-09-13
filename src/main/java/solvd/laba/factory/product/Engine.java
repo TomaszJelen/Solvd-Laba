@@ -1,5 +1,7 @@
 package solvd.laba.factory.product;
 
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+
 public class Engine extends Product{
     private int power;
 
@@ -14,6 +16,9 @@ public class Engine extends Product{
     }
 
     public void setPower(int power) {
+        if (power < 0) {
+            throw new NegativeArgumentException("Power cannot be lower than 0");
+        }
         this.power = power;
     }
 

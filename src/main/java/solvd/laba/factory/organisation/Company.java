@@ -1,8 +1,9 @@
 package solvd.laba.factory.organisation;
 
+import solvd.laba.factory.exceptions.InvalidStringException;
 import solvd.laba.factory.production.Factory;
 
-public final class Company {
+public class Company {
     private String name;
     private Factory[] factories;
 
@@ -15,6 +16,9 @@ public final class Company {
     }
 
     public void setName(String name) {
+        if (name.isEmpty()) {
+            throw new InvalidStringException("Company name should not be empty");
+        }
         this.name = name;
     }
 

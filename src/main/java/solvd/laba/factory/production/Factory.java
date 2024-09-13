@@ -2,6 +2,8 @@ package solvd.laba.factory.production;
 
 import solvd.laba.factory.employees.ChiefManager;
 import solvd.laba.factory.employees.Employee;
+import solvd.laba.factory.exceptions.InvalidDateException;
+import solvd.laba.factory.exceptions.NullArgumentException;
 import solvd.laba.factory.organisation.Location;
 import solvd.laba.factory.organisation.Supplier;
 import solvd.laba.factory.employees.Manager;
@@ -26,9 +28,12 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
         this.productionLines = productionLines;
     }
 
-    public Factory(Location location, ProductionLine[] productionLines, LocalDate openingDate) {
+    public Factory(Location location, ProductionLine[] productionLines, LocalDate openingDate) throws InvalidDateException {
         this.location = location;
         this.productionLines = productionLines;
+        if (openingDate.isAfter(LocalDate.now().plusYears(10))) {
+            throw new InvalidDateException("Plans cannot be made more than 10 years in future");
+        }
         this.openingDate = openingDate;
     }
 
@@ -37,6 +42,7 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
         this.chiefManager = chiefManager;
         this.productionLines = productionLines;
         this.suppliers = suppliers;
+
         this.openingDate = openingDate;
     }
 
@@ -45,6 +51,9 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     }
 
     public void setLocation(Location location) {
+        if (location == null) {
+            throw new NullArgumentException("Location cannot be null");
+        }
         this.location = location;
     }
 
@@ -53,6 +62,9 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     }
 
     public void setChiefManager(ChiefManager chiefManager) {
+        if (chiefManager == null) {
+            throw new NullArgumentException("Chief manager cannot be null");
+        }
         this.chiefManager = chiefManager;
     }
 
@@ -82,7 +94,12 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
 
     public Storage getStorage() { return storage; }
 
-    public void setStorage(Storage storage) { this.storage = storage; }
+    public void setStorage(Storage storage) {
+        if (storage == null) {
+            throw new NullArgumentException("Storage cannot be null");
+        }
+        this.storage = storage;
+    }
 
     @Override
     public int calculateTotalSalary() {

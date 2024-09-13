@@ -1,5 +1,8 @@
 package solvd.laba.factory.employees;
 
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+import solvd.laba.factory.exceptions.NegativeBonusException;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -14,6 +17,9 @@ public class Manager extends Employee {
     public Manager(String name, String surname, int id, LocalDate workingSince) {
         this.name = name;
         this.surname = surname;
+        if (id < 0) {
+            throw new NegativeArgumentException("Id cannot be lower than 0");
+        }
         this.id = id;
         this.workingSince = workingSince;
     }
@@ -24,8 +30,12 @@ public class Manager extends Employee {
     }
 
     @Override
-    public int calculateStandardBonus(int salary) {
-        return (int) (salary * standardBonus);
+    public int calculateStandardBonus() {
+        int bonus = (int) (salary * standardBonus);
+        if (bonus < 0) {
+            throw new NegativeBonusException("Error during calculating bonus: negative outcome");
+        }
+        return bonus;
     }
 
     @Override

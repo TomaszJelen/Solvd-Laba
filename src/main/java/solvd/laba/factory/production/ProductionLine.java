@@ -2,6 +2,8 @@ package solvd.laba.factory.production;
 
 import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.employees.Manager;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+import solvd.laba.factory.exceptions.NullArgumentException;
 import solvd.laba.factory.product.CarModel;
 
 import java.util.Arrays;
@@ -31,6 +33,9 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
     }
 
     public void setManager(Manager manager) {
+        if (manager == null) {
+            throw new NullArgumentException("Manager cannot be null");
+        }
         this.manager = manager;
     }
 
@@ -47,6 +52,9 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
     }
 
     public void setCarModel(CarModel carModel) {
+        if (carModel == null) {
+            throw new NullArgumentException("Car model cannot be null");
+        }
         this.carModel = carModel;
     }
 
@@ -55,6 +63,9 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
     }
 
     public void setProductionLineCarProduced(int productionLineCarProduced) {
+        if (productionLineCarProduced < 0) {
+            throw new NegativeArgumentException("Number of produced cars cannot be lower than 0");
+        }
         this.productionLineCarProduced = productionLineCarProduced;
     }
 

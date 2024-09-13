@@ -1,6 +1,8 @@
 package solvd.laba.factory.organisation;
 
 import solvd.laba.factory.employees.LengthOfServiceCalculation;
+import solvd.laba.factory.exceptions.InvalidStringException;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.production.ExpenseCalculation;
 
 import java.time.LocalDate;
@@ -9,7 +11,7 @@ import java.time.Period;
 public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation {
     private String name;
     private String[] parts;
-    private int cost;
+    private int payment;
     private LocalDate cooperateSince;
 
     public Supplier(String name) {
@@ -21,6 +23,9 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
     }
 
     public void setName(String name) {
+        if (name.isEmpty()) {
+            throw new InvalidStringException("Supplier name should not be empty");
+        }
         this.name = name;
     }
 
@@ -32,12 +37,15 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
         this.parts = parts;
     }
 
-    public int getCost() {
-        return cost;
+    public int getPayment() {
+        return payment;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setPayment(int payment) {
+        if (payment < 0) {
+            throw new NegativeArgumentException("Payment cannot be lower than 0");
+        }
+        this.payment = payment;
     }
 
     public LocalDate getCooperateSince() {
@@ -68,7 +76,7 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
 
     @Override
     public int calculateTotalExpense() {
-        return getCost();
+        return getPayment();
     }
 
     @Override

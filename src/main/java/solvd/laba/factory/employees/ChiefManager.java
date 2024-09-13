@@ -1,5 +1,8 @@
 package solvd.laba.factory.employees;
 
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+import solvd.laba.factory.exceptions.NegativeBonusException;
+
 import java.time.LocalDate;
 
 public class ChiefManager extends Manager{
@@ -19,8 +22,12 @@ public class ChiefManager extends Manager{
     }
 
     @Override
-    public int calculateStandardBonus(int salary) {
-        return (int) (salary * standardBonus);
+    public int calculateStandardBonus() {
+        int bonus = (int) (salary * standardBonus);
+        if (bonus < 0) {
+            throw new NegativeBonusException("Error during calculating bonus: negative outcome");
+        }
+        return bonus;
     }
 
     @Override

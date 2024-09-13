@@ -1,5 +1,9 @@
 package solvd.laba.factory.employees;
 
+import solvd.laba.factory.exceptions.InvalidStringException;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+import solvd.laba.factory.exceptions.NegativeBonusException;
+
 import java.time.LocalDate;
 
 public class Worker extends Employee {
@@ -13,6 +17,9 @@ public class Worker extends Employee {
     public Worker(String name, String surname, int id, LocalDate workingSince, String jobDescription) {
         this.name = name;
         this.surname = surname;
+        if (id < 0) {
+            throw new NegativeArgumentException("Id cannot be lower than 0");
+        }
         this.id = id;
         this.workingSince = workingSince;
         this.jobDescription = jobDescription;
@@ -23,6 +30,9 @@ public class Worker extends Employee {
     }
 
     public void setJobDescription(String jobDescription) {
+        if (jobDescription.isEmpty()) {
+            throw new InvalidStringException("Job description should not be empty");
+        }
         this.jobDescription = jobDescription;
     }
 
@@ -37,8 +47,12 @@ public class Worker extends Employee {
     }
 
     @Override
-    public int calculateStandardBonus(int salary) {
-        return (int) (salary * standardBonus);
+    public int calculateStandardBonus() {
+        int bonus = (int) (salary * standardBonus);
+        if (bonus < 0) {
+            throw new NegativeBonusException("Error during calculating bonus: negative outcome");
+        }
+        return bonus;
     }
 
     @Override

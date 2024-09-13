@@ -2,6 +2,8 @@ package solvd.laba.factory.production;
 
 import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.employees.Worker;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
+import solvd.laba.factory.exceptions.NullArgumentException;
 
 import java.util.Set;
 
@@ -18,6 +20,9 @@ public class Workstation implements EmployeeListing {
     }
 
     public void setId(int id) {
+        if (id < 0) {
+            throw new NegativeArgumentException("Id cannot be lower than 0");
+        }
         this.id = id;
     }
 
@@ -26,6 +31,9 @@ public class Workstation implements EmployeeListing {
     }
 
     public void setWorker(Worker worker) {
+        if (worker == null) {
+            throw new NullArgumentException("Worker cannot be null");
+        }
         this.worker = worker;
     }
 

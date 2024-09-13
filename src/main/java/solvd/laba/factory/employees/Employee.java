@@ -1,13 +1,13 @@
 package solvd.laba.factory.employees;
 
 import solvd.laba.factory.Person;
+import solvd.laba.factory.exceptions.NegativeArgumentException;
 
 import java.time.LocalDate;
 import java.time.Period;
 
 public abstract class Employee extends Person implements LengthOfServiceCalculation {
     protected int id;
-    //double isn't accurate enough for money but must do for now
     protected int salary;
     protected LocalDate workingSince;
 
@@ -16,6 +16,9 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
     }
 
     public final void setId(int id) {
+        if (id < 0) {
+            throw new NegativeArgumentException("Id cannot be lower than 0");
+        }
         this.id = id;
     }
 
@@ -24,6 +27,9 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
     }
 
     public void setSalary(int salary) {
+        if (salary < 0) {
+            throw new NegativeArgumentException("Salary cannot be lower than 0");
+        }
         this.salary = salary;
     }
 
@@ -36,7 +42,7 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
     }
 
     public abstract void printPosition();
-    public abstract int calculateStandardBonus(int salary);
+    public abstract int calculateStandardBonus();
 
     @Override
     public boolean equals(Object o) {

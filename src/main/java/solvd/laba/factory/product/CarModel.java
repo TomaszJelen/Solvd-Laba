@@ -1,5 +1,8 @@
 package solvd.laba.factory.product;
 
+import solvd.laba.factory.exceptions.NegativeBonusException;
+import solvd.laba.factory.exceptions.NullArgumentException;
+
 public class CarModel extends Product {
     public static final int standardNumberOfWheels = 4;
     private Engine engine;
@@ -15,6 +18,9 @@ public class CarModel extends Product {
     }
 
     public void setEngine(Engine engine) {
+        if (engine == null) {
+            throw new NullArgumentException("Engine cannot be null");
+        }
         this.engine = engine;
     }
 
