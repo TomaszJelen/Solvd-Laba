@@ -3,9 +3,11 @@ package solvd.laba.factory.organisation;
 import solvd.laba.factory.exceptions.InvalidStringException;
 import solvd.laba.factory.production.Factory;
 
+import java.util.Set;
+
 public class Company {
     private String name;
-    private Factory[] factories;
+    private Set<Factory> factories;
 
     public Company(String name) {
         this.name = name;
@@ -22,11 +24,11 @@ public class Company {
         this.name = name;
     }
 
-    public Factory[] getFactories() {
+    public Set<Factory> getFactories() {
         return factories;
     }
 
-    public void setFactories(Factory[] factories) {
+    public void setFactories(Set<Factory> factories) {
         this.factories = factories;
     }
 

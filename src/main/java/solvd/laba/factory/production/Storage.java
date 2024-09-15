@@ -3,9 +3,11 @@ package solvd.laba.factory.production;
 import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.product.Product;
 
+import java.util.Set;
+
 public class Storage {
     private int volume;
-    private Product[] stored;
+    private Set<Product> stored;
 
     public int getVolume() {
         return volume;
@@ -18,19 +20,20 @@ public class Storage {
         this.volume = volume;
     }
 
-    public Product[] getStored() {
+    public Set<Product> getStored() {
         return stored;
     }
 
-    public void setStored(Product[] stored) {
+    public void setStored(Set<Product> stored) {
         this.stored = stored;
     }
 
     public void store(Product product) {
-        Product[] extendedStored = new Product[stored.length + 1];
-        System.arraycopy(stored, 0, extendedStored, 0, stored.length);
-        extendedStored[extendedStored.length -1] = product;
-        stored = extendedStored;
+//        Product[] extendedStored = new Product[stored.length + 1];
+//        System.arraycopy(stored, 0, extendedStored, 0, stored.length);
+//        extendedStored[extendedStored.length -1] = product;
+//        stored = extendedStored;
+        stored.add(product);
     }
 
     @Override

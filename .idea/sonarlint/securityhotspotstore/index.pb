@@ -98,9 +98,9 @@ z
 Jsrc/main/java/solvd/laba/factory/exceptions/NegativeArgumentException.java,1\2\12ca4961a1a3058e348faa37fbcff5a4f3ea073a
 w
 Gsrc/main/java/solvd/laba/factory/exceptions/NegativeBonusException.java,1\c\1c744cc03b6ab8944f9dd442ea51870b207a399b
-u
-Esrc/main/java/solvd/laba/factory/exceptions/InvalidNameException.java,c\b\cbe2da9280c12d6712730fe1b7ee026cbadfa7f4
 w
 Gsrc/main/java/solvd/laba/factory/exceptions/InvalidStringException.java,c\5\c5e1d8070bb9198d967c0d45d7aa489e640cd6d6
 7
 app.log,a\0\a04cdc1b813999384ef385ac5191cbe69e844545
+k
+;src/main/java/solvd/laba/factory/util/CustomLinkedList.java,5\2\520eea8a78046e93426d3ce03799fe486f72e7bc

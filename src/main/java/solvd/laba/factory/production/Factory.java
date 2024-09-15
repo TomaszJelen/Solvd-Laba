@@ -7,6 +7,7 @@ import solvd.laba.factory.exceptions.NullArgumentException;
 import solvd.laba.factory.organisation.Location;
 import solvd.laba.factory.organisation.Supplier;
 import solvd.laba.factory.employees.Manager;
+import solvd.laba.factory.util.CustomLinkedList;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -17,18 +18,19 @@ import java.util.Set;
 public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
     private Location location;
     private ChiefManager chiefManager;
-    private ProductionLine[] productionLines;
-    private Supplier[] suppliers;
+//    private ProductionLine[] productionLines;
+    private CustomLinkedList<ProductionLine> productionLines;
+    private Set<Supplier> suppliers;
     private LocalDate openingDate;
     private Storage storage;
 
 
-    public Factory(Location location, ProductionLine[] productionLines) {
+    public Factory(Location location, CustomLinkedList<ProductionLine> productionLines) {
         this.location = location;
         this.productionLines = productionLines;
     }
 
-    public Factory(Location location, ProductionLine[] productionLines, LocalDate openingDate) throws InvalidDateException {
+    public Factory(Location location, CustomLinkedList<ProductionLine> productionLines, LocalDate openingDate) throws InvalidDateException {
         this.location = location;
         this.productionLines = productionLines;
         if (openingDate.isAfter(LocalDate.now().plusYears(10))) {
@@ -37,7 +39,7 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
         this.openingDate = openingDate;
     }
 
-    public Factory(Location location, ChiefManager chiefManager, ProductionLine[] productionLines, Supplier[] suppliers, LocalDate openingDate) {
+    public Factory(Location location, ChiefManager chiefManager, CustomLinkedList<ProductionLine> productionLines, Set<Supplier> suppliers, LocalDate openingDate) {
         this.location = location;
         this.chiefManager = chiefManager;
         this.productionLines = productionLines;
@@ -68,19 +70,19 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
         this.chiefManager = chiefManager;
     }
 
-    public ProductionLine[] getProductionLines() {
+    public CustomLinkedList<ProductionLine> getProductionLines() {
         return productionLines;
     }
 
-    public void setProductionLines(ProductionLine[] productionLines) {
+    public void setProductionLines(CustomLinkedList<ProductionLine> productionLines) {
         this.productionLines = productionLines;
     }
 
-    public Supplier[] getSuppliers() {
+    public Set<Supplier> getSuppliers() {
         return suppliers;
     }
 
-    public void setSuppliers(Supplier[] suppliers) {
+    public void setSuppliers(Set<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
 
@@ -123,14 +125,14 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
 
         if (!location.equals(factory.location)) return false;
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        if (!Arrays.equals(productionLines, factory.productionLines)) return false;
+        if (!productionLines.equals(factory.productionLines)) return false;
         return Objects.equals(openingDate, factory.openingDate);
     }
 
     @Override
     public int hashCode() {
         int result = location.hashCode();
-        result = 31 * result + Arrays.hashCode(productionLines);
+        result = 31 * result + productionLines.hashCode();
         result = 31 * result + (openingDate != null ? openingDate.hashCode() : 0);
         return result;
     }

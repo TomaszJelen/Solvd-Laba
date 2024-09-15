@@ -15,7 +15,7 @@
         </Console>
 
         <RollingFile name="FILE"
-                     fileName="${basePath}/app.log"
+                     fileName="${basePath}/target/app.log"
                      filePattern="${basePath}/app-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{5} - %msg%n"/>
             <DefaultRolloverStrategy max="10">

@@ -7,11 +7,11 @@ import solvd.laba.factory.production.ExpenseCalculation;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Map;
 
 public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation {
     private String name;
-    private String[] parts;
-    private int payment;
+    private Map<String, Integer> parts;
     private LocalDate cooperateSince;
 
     public Supplier(String name) {
@@ -29,23 +29,12 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
         this.name = name;
     }
 
-    public String[] getParts() {
+    public Map<String, Integer> getParts() {
         return parts;
     }
 
-    public void setParts(String[] parts) {
+    public void setParts(Map<String, Integer> parts) {
         this.parts = parts;
-    }
-
-    public int getPayment() {
-        return payment;
-    }
-
-    public void setPayment(int payment) {
-        if (payment < 0) {
-            throw new NegativeArgumentException("Payment cannot be lower than 0");
-        }
-        this.payment = payment;
     }
 
     public LocalDate getCooperateSince() {
@@ -76,7 +65,11 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
 
     @Override
     public int calculateTotalExpense() {
-        return getPayment();
+        int payment = 0;
+        for (Map.Entry<String, Integer> part : parts.entrySet()) {
+            payment += part.getValue();
+        }
+        return payment;
     }
 
     @Override

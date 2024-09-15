@@ -23,6 +23,8 @@ public class Manager extends Employee {
         this.workingSince = workingSince;
     }
 
+    public Manager() {}
+
     @Override
     public void printPosition() {
         System.out.println("This is manager");

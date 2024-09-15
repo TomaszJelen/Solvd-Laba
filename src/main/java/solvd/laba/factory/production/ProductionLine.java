@@ -5,6 +5,7 @@ import solvd.laba.factory.employees.Manager;
 import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.exceptions.NullArgumentException;
 import solvd.laba.factory.product.CarModel;
+import solvd.laba.factory.util.CustomLinkedList;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,16 +14,17 @@ import java.util.Set;
 
 public class ProductionLine implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
     private Manager manager;
-    private Workstation[] workstations;
+//    private Workstation[] workstations;
+    private CustomLinkedList<Workstation> workstations;
     private CarModel carModel;
     private int productionLineCarProduced;
     private static int globalCarProduced = 0;
 
-    public ProductionLine(Workstation[] workstations) {
+    public ProductionLine(CustomLinkedList<Workstation> workstations) {
         this.workstations = workstations;
     }
 
-    public ProductionLine(Manager manager, Workstation[] workstations, CarModel carModel) {
+    public ProductionLine(Manager manager, CustomLinkedList<Workstation> workstations, CarModel carModel) {
         this.manager = manager;
         this.workstations = workstations;
         this.carModel = carModel;
@@ -39,11 +41,11 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
         this.manager = manager;
     }
 
-    public Workstation[] getWorkstations() {
+    public CustomLinkedList<Workstation> getWorkstations() {
         return workstations;
     }
 
-    public void setWorkstations(Workstation[] workstations) {
+    public void setWorkstations(CustomLinkedList<Workstation> workstations) {
         this.workstations = workstations;
     }
 
@@ -103,13 +105,13 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
         if (!(o instanceof ProductionLine that)) return false;
 
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        if (!Arrays.equals(workstations, that.workstations)) return false;
+        if (!workstations.equals(that.workstations)) return false;
         return Objects.equals(carModel, that.carModel);
     }
 
     @Override
     public int hashCode() {
-        int result = Arrays.hashCode(workstations);
+        int result = workstations.hashCode();
         result = 31 * result + (carModel != null ? carModel.hashCode() : 0);
         return result;
     }

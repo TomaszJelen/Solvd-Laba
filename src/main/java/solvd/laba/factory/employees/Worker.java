@@ -25,6 +25,9 @@ public class Worker extends Employee {
         this.jobDescription = jobDescription;
     }
 
+    public Worker() {
+    }
+
     public String getJobDescription() {
         return jobDescription;
     }
