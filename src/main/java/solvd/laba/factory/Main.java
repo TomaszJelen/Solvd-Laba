@@ -16,6 +16,7 @@ import solvd.laba.factory.production.ProductionLine;
 import solvd.laba.factory.production.Workstation;
 import solvd.laba.factory.util.CustomLinkedList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
@@ -27,18 +28,19 @@ public class Main {
     public static void main(String[] args) {
 
         LOGGER.trace("Program start");
-        System.out.println("Let's create Car company with 1 factory");
+//        System.out.println("Let's create Car company with 1 factory");
         LOGGER.info("Let's create Car company with 1 factory");
 
 //        CarModel.declareNumberOfWheels(4);
 
         System.out.print("Enter planned factory opening date (yyyy-mm-dd): ");
-        LocalDate openingDate;
+        LocalDate openingDate = null;
         try (Scanner scanner = new Scanner(System.in)) {
             String dateString = scanner.next();
             openingDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
+        } catch (Exception e) {
+            LOGGER.error("", e);
         }
-
 
         Engine engine = new Engine("Type I", 100, 20000);
         CarModel carModel = new CarModel("T1", engine, 70000);
@@ -75,6 +77,10 @@ public class Main {
         Company company = new Company("Car company");
         company.setFactories(factories);
 
-
+        try {
+            company.generateReport();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

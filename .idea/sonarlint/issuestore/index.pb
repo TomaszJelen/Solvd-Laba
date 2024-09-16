@@ -104,3 +104,8 @@ Gsrc/main/java/solvd/laba/factory/exceptions/InvalidStringException.java,c\5\c5
 app.log,a\0\a04cdc1b813999384ef385ac5191cbe69e844545
 k
 ;src/main/java/solvd/laba/factory/util/CustomLinkedList.java,5\2\520eea8a78046e93426d3ce03799fe486f72e7bc
+8
+test.txt,4\b\4b6fcb2d521ef0fd442a5301e7932d16cc9f375a
+:
+
+Report.txt,f\c\fc6484b70a5cf8b90b081e4caa31e94e43aa23d5

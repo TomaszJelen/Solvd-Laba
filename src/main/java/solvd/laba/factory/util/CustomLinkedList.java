@@ -43,8 +43,8 @@ public class CustomLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     @Override
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
             Node<E> node = first;
             @Override
             public boolean hasNext() {
@@ -52,7 +52,7 @@ public class CustomLinkedList<E> implements List<E>, Iterable<E> {
             }
 
             @Override
-            public Object next() {
+            public E next() {
                 node = node.next;
                 return node.element;
             }
@@ -67,7 +67,8 @@ public class CustomLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public boolean add(E e) {
         if (last == null) {
-            last = new Node<>(null, e, null);
+            first = new Node<>(null, e, null);
+            last = first;
         } else {
             Node<E> newNode = new Node<>(last, e, null);
             last.next = newNode;
@@ -230,15 +231,24 @@ public class CustomLinkedList<E> implements List<E>, Iterable<E> {
         if (!(o instanceof CustomLinkedList<?> that)) return false;
 
         if (size != that.size) return false;
-        if (!Objects.equals(first, that.first)) return false;
-        return Objects.equals(last, that.last);
+        Iterator i1 = ((CustomLinkedList<?>) o).iterator();
+        Iterator<E> i2 = this.iterator();
+        while (i1.hasNext() && i2.hasNext()) {
+            E o1 = i2.next();
+            Object o2 = i1.next();
+            if (!(Objects.equals(o1, o2))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = size;
-        result = 31 * result + (first != null ? first.hashCode() : 0);
-        result = 31 * result + (last != null ? last.hashCode() : 0);
+        for(E element : this) {
+            result = 31 * result + (element != null ? element.hashCode() : 0);
+        }
         return result;
     }
 
