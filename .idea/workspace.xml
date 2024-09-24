@@ -4,17 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376a4313-0f2d-4e08-8167-ce79b1292205" name="Changes" comment="Minor update">
+    <list default="true" id="376a4313-0f2d-4e08-8167-ce79b1292205" name="Changes" comment="Completed FileUtils, StringUtils, debug and minor fixes to CustomLinkedList">
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/enums/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/enums/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/enums/InspectionFrequency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/enums/PowerConsumption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/enums/Sex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/multithreading/CustomConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/multithreading/CustomConnectionImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/multithreading/CustomConnectionPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/multithreading/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/multithreading/TaskThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/util/AverageCalculation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/63da482823c4b822bab34596261db7abff073fca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/63da482823c4b822bab34596261db7abff073fca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f8b68daed20379f22f38ef21035e7776c8fb62a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f8b68daed20379f22f38ef21035e7776c8fb62a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df704ac2bf1d518ea820d82d180f32aa318b1c62" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df704ac2bf1d518ea820d82d180f32aa318b1c62" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/employees/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/ExpenseCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/ExpenseCalculation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/util/CustomLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/util/CustomLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/organisation/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/ProductionLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/ProductionLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Workstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Workstation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +40,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -56,6 +73,7 @@
       <recent name="solvd.laba.factory.production" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="solvd.laba.factory.multithreading" />
       <recent name="solvd.laba.factory.exceptions" />
       <recent name="solvd.laba.sorting" />
     </key>
@@ -127,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726227832625</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Completed FileUtils, StringUtils, debug and minor fixes to CustomLinkedList">
+      <option name="closed" value="true" />
+      <created>1726505273445</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726505273445</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,19 +171,15 @@
     <MESSAGE value="Minor structure update" />
     <MESSAGE value="Completed Exceptions, Logger" />
     <MESSAGE value="Minor update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor update" />
+    <MESSAGE value="Completed FileUtils, StringUtils, debug and minor fixes to CustomLinkedList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed FileUtils, StringUtils, debug and minor fixes to CustomLinkedList" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/solvd/laba/factory/Main.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/solvd/laba/factory/production/Factory.java</url>
-          <line>152</line>
+          <line>166</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">

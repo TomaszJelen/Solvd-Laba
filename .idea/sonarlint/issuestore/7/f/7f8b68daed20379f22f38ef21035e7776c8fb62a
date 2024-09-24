@@ -1,8 +1,29 @@
 
-~	java:S125"<This block of commented-out lines of code should be removed.(¥„‚8ëû’ªŸ2J$56f17a17-9bad-4633-a857-afef10455aa1
+x
+java:S3740‘"/Provide the parametrized type for this generic.(”Äœİùÿÿÿÿ8±©ØŸ¢2J$76e37458-be43-45bf-96c3-2eaea95d8d9d
+~	java:S125"<This block of commented-out lines of code should be removed.(¥„‚8¾©ØŸ¢2J$598e39ea-53d2-4ae9-b901-97882b653f88
+ƒ	java:S125X"<This block of commented-out lines of code should be removed.(¼íÁîûÿÿÿÿ8Á©ØŸ¢2J$8bd8f657-88b8-41c6-be4a-94a12dba6a39
+z
+java:S1135Y"2Complete the task associated to this TODO comment.(òìëÿÿÿÿÿ8Á©ØŸ¢2J$71d86968-98aa-4e74-91b7-3d5793425c88
+ƒ	java:S125]"<This block of commented-out lines of code should be removed.(ŞşØ°øÿÿÿÿ8Â©ØŸ¢2J$e797101b-5a48-4325-8bbc-35408d7f623a
 ~
-java:S2696]"6Make the enclosing method "static" or remove this set.(ıßÉâüÿÿÿÿ8ğû’ªŸ2J$e3a60a17-b294-4c23-b032-7b9020c2e1b5
-r	java:S106^"+Replace this use of System.out by a logger.(Š¹ç‰şÿÿÿÿ8ñû’ªŸ2J$d45c5562-12a5-419d-ba96-aa5123fd9551
-u
-java:S1128
-"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8£ä›«Ÿ2J$e9a2266e-e08e-4636-b2b1-09c668c6661e
+java:S2696h"6Make the enclosing method "static" or remove this set.(ıßÉâüÿÿÿÿ8Ã©ØŸ¢2J$b05d03a3-62c5-43e2-bb85-19a665cf267b
+r	java:S106i"+Replace this use of System.out by a logger.(Š¹ç‰şÿÿÿÿ8Ä©ØŸ¢2J$3dc80f9b-e21b-4450-a41d-51045a4ca522
+n	java:S106–"+Replace this use of System.out by a logger.(õ¸èµ8Æ©ØŸ¢2J$7aeba906-01b2-4e69-8ce7-0ac4f357f869
+|
+java:S1611–"8Remove the parentheses around the "collection" parameter(õ¸èµ8Ç©ØŸ¢2J$96e4aa3f-3091-4ba9-a771-e9db15bce6b2
+—
+java:S1602–"SRemove useless curly braces around statement and then remove useless return keyword(õ¸èµ8Ç©ØŸ¢2J$33c089f7-e849-4cdb-ad61-50e8832f8f21
+}
+java:S1611˜"9Remove the parentheses around the "workstation" parameter(œ·º¬8È©ØŸ¢2J$3ffab6e4-ded5-47b8-aece-3232f8cf4c60
+‚
+java:S1611™">Remove the parentheses around the "powerConsumption" parameter(êüµ8È©ØŸ¢2J$c9ec4642-e698-4dc3-b14e-71bcbe0ed63a
+n	java:S106 "+Replace this use of System.out by a logger.(õ¸èµ8È©ØŸ¢2J$200c178e-edcb-44d2-a83a-e75267a727a2
+|
+java:S1611 "8Remove the parentheses around the "collection" parameter(õ¸èµ8È©ØŸ¢2J$271a27d3-aff8-4ff1-a7e9-4288d6f860cb
+—
+java:S1602 "SRemove useless curly braces around statement and then remove useless return keyword(õ¸èµ8È©ØŸ¢2J$c12f0448-6c1b-4817-8ea1-3225a6533bc4
+}
+java:S1611¢"9Remove the parentheses around the "workstation" parameter(®€ë„8ÔØØŸ¢2J$78d9623f-00a3-4f5e-a608-c2ab72e99e22
+z
+java:S1068"7Remove this unused "inspectionFrequency" private field.(·­ã‡8É©ØŸ¢2J$5332d77e-7bdc-4872-90ee-a42ca3c4fa5b

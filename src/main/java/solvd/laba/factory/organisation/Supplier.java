@@ -8,6 +8,8 @@ import solvd.laba.factory.production.ExpenseCalculation;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation {
     private String name;
@@ -63,13 +65,16 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
         return name.hashCode();
     }
 
+    //TODO stream done
     @Override
     public int calculateTotalExpense() {
-        int payment = 0;
-        for (Map.Entry<String, Integer> part : parts.entrySet()) {
-            payment += part.getValue();
-        }
-        return payment;
+//        int payment = 0;
+//        for (Map.Entry<String, Integer> part : parts.entrySet()) {
+//            payment += part.getValue();
+//        }
+        return parts.entrySet().stream()
+                .map(Map.Entry::getValue)
+                .reduce(0, Integer::sum);
     }
 
     @Override
@@ -80,5 +85,9 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
     @Override
     public int calculateYearsLengthOfService() {
         return Period.between(cooperateSince, LocalDate.now()).getYears();
+    }
+
+    public Optional<Integer> getPartsValue(String name) {
+        return Optional.of(parts.get(name));
     }
 }

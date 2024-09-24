@@ -5,6 +5,7 @@ import solvd.laba.factory.exceptions.NegativeArgumentException;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Optional;
 
 public abstract class Employee extends Person implements LengthOfServiceCalculation {
     protected int id;
@@ -22,8 +23,9 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
         this.id = id;
     }
 
-    public int getSalary() {
-        return salary;
+    // TODO optional done
+    public Optional<Integer> getSalary() {
+        return Optional.of(salary);
     }
 
     public void setSalary(int salary) {
@@ -33,8 +35,9 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
         this.salary = salary;
     }
 
-    public LocalDate getWorkingSince() {
-        return workingSince;
+    // TODO optional done?
+    public Optional<LocalDate> getWorkingSince() {
+        return Optional.ofNullable(workingSince);
     }
 
     public void setWorkingSince(LocalDate workingSince) {

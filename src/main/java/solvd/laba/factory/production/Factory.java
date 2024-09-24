@@ -1,5 +1,8 @@
 package solvd.laba.factory.production;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import solvd.laba.factory.Main;
 import solvd.laba.factory.employees.ChiefManager;
 import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.exceptions.InvalidDateException;
@@ -9,13 +12,12 @@ import solvd.laba.factory.organisation.Supplier;
 import solvd.laba.factory.employees.Manager;
 import solvd.laba.factory.util.CustomLinkedList;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
+    static final Logger LOGGER = LogManager.getLogger(Factory.class);
     private Location location;
     private ChiefManager chiefManager;
 //    private ProductionLine[] productionLines;
@@ -105,11 +107,18 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
 
     @Override
     public int calculateTotalSalary() {
-        int totalSalary = 0;
-        for (ProductionLine productionLine : productionLines) {
-            totalSalary += productionLine.calculateTotalSalary();
-        }
-        totalSalary += chiefManager.getSalary();
+//        int totalSalary = 0;
+        //TODO stream done
+        int totalSalary = productionLines.stream()
+                .map(ProductionLine::calculateTotalSalary)
+                .reduce(0, Integer::sum);
+//        for (ProductionLine productionLine : productionLines) {
+//            totalSalary += productionLine.calculateTotalSalary();
+//        }
+        totalSalary += chiefManager.getSalary().orElseGet(() -> {
+            LOGGER.info("Ignored empty salary field");
+            return 0;
+        });
         return totalSalary;
     }
 
@@ -140,19 +149,26 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     @Override
     public Set<Employee> workingEmployees() {
         Set<Employee> employees = new HashSet<>();
-        for (ProductionLine productionLine : productionLines) {
-            employees.addAll(productionLine.workingEmployees());
-        }
+        //TODO stream done
+        productionLines.stream()
+                .map(ProductionLine::workingEmployees)
+                .forEach(employees::addAll);
+//        for (ProductionLine productionLine : productionLines) {
+//            employees.addAll(productionLine.workingEmployees());
+//        }
         employees.add(chiefManager);
         return employees;
     }
 
     @Override
     public int calculateTotalIncomeNetto() {
-         int income = 0;
-        for (ProductionLine productionLine : productionLines) {
-            income += productionLine.calculateTotalIncomeNetto();
-        }
-        return income;
+//         int income = 0;
+         //TODO stream done
+//        for (ProductionLine productionLine : productionLines) {
+//            income += productionLine.calculateTotalIncomeNetto();
+//        }
+        return productionLines.stream()
+                .map(ProductionLine::calculateTotalIncomeNetto)
+                .reduce(0, Integer::sum);
     }
 }

@@ -1,24 +1,28 @@
 package solvd.laba.factory.production;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import solvd.laba.factory.employees.Employee;
 import solvd.laba.factory.employees.Manager;
+import solvd.laba.factory.enums.InspectionFrequency;
+import solvd.laba.factory.enums.PowerConsumption;
 import solvd.laba.factory.exceptions.NegativeArgumentException;
 import solvd.laba.factory.exceptions.NullArgumentException;
 import solvd.laba.factory.product.CarModel;
+import solvd.laba.factory.util.CollectionCalculation;
 import solvd.laba.factory.util.CustomLinkedList;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class ProductionLine implements SalaryCalculation, EmployeeListing, IncomeNettoCalculation {
+    static final Logger LOGGER = LogManager.getLogger(ProductionLine.class);
     private Manager manager;
 //    private Workstation[] workstations;
     private CustomLinkedList<Workstation> workstations;
     private CarModel carModel;
     private int productionLineCarProduced;
     private static int globalCarProduced = 0;
+    private InspectionFrequency inspectionFrequency;
 
     public ProductionLine(CustomLinkedList<Workstation> workstations) {
         this.workstations = workstations;
@@ -81,11 +85,18 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
 
     @Override
     public int calculateTotalSalary() {
-        int totalSalary = 0;
-        for (Workstation workstation : workstations) {
-            totalSalary += workstation.calculateSalary();
-        }
-        totalSalary += manager.getSalary();
+//        int totalSalary = 0;
+        //TODO stream done
+        int totalSalary = workstations.stream()
+                .map(Workstation::calculateSalary)
+                .reduce(0, Integer::sum);
+//        for (Workstation workstation : workstations) {
+//            totalSalary += workstation.calculateSalary();
+//        }
+        totalSalary += manager.getSalary().orElseGet(() -> {
+            LOGGER.info("Ignored empty salary field");
+            return 0;
+        });
         return totalSalary;
     }
     void produceCar() {
@@ -129,5 +140,27 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
     @Override
     public int calculateTotalIncomeNetto() {
         return 30 * carModel.getValue();
+    }
+
+    private int getCollectionCalculationValue(Collection collection, CollectionCalculation calculation) {
+        return calculation.calculate(collection);
+    }
+
+    public void printAveragePowerConsumption() {
+        System.out.println(getCollectionCalculationValue(workstations, (collection) -> {
+            return (int) collection.stream()
+                    .map((workstation) -> ((Workstation) workstation).getPowerConsumption())
+                    .mapToInt((powerConsumption) -> ((PowerConsumption) powerConsumption).getAveragePower())
+                    .average()
+                    .getAsDouble();
+        }));
+    }
+
+    public void printWeeklyInspectionCounter() {
+        System.out.println(getCollectionCalculationValue(workstations, (collection) -> {
+            return Math.toIntExact(collection.stream()
+                    .filter((workstation) -> ((Workstation) workstation).getInspectionFrequency().equals(InspectionFrequency.WEEKLY))
+                    .count());
+        }));
     }
 }

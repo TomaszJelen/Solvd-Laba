@@ -1,11 +1,13 @@
 package solvd.laba.factory.organisation;
 
+import solvd.laba.factory.enums.Country;
 import solvd.laba.factory.exceptions.InvalidStringException;
 import solvd.laba.factory.exceptions.NegativeArgumentException;
 
 public class Location {
     private int areaSize;
     private String address;
+    private Country country;
 
     public Location(int areaSize, String address) {
         this.areaSize = areaSize;
