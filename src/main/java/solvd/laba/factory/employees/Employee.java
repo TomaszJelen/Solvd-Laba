@@ -6,6 +6,8 @@ import solvd.laba.factory.exceptions.NegativeArgumentException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class Employee extends Person implements LengthOfServiceCalculation {
     protected int id;
@@ -23,7 +25,6 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
         this.id = id;
     }
 
-    // TODO optional done
     public Optional<Integer> getSalary() {
         return Optional.of(salary);
     }
@@ -35,7 +36,6 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
         this.salary = salary;
     }
 
-    // TODO optional done?
     public Optional<LocalDate> getWorkingSince() {
         return Optional.ofNullable(workingSince);
     }
@@ -46,6 +46,13 @@ public abstract class Employee extends Person implements LengthOfServiceCalculat
 
     public abstract void printPosition();
     public abstract int calculateStandardBonus();
+    public int calculateNonStandardBonus(Function<Integer, Integer> nonStandardCalculation, Predicate<Employee> bonusCondition) {
+        if (bonusCondition.test(this)) {
+            return nonStandardCalculation.apply(salary);
+        } else {
+            return 0;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

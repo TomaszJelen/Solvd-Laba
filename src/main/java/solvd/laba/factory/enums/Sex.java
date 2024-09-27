@@ -1,6 +1,5 @@
 package solvd.laba.factory.enums;
 
-//TODO enum done?
 public enum Sex {
     MALE("M", "male"),
     FEMALE("F", "female"),

@@ -126,7 +126,7 @@ public class Main {
         });
         TaskThread taskThread = new TaskThread();
         taskThread.start();
-        CustomConnectionPool connectionPool = new CustomConnectionPool(5);
+        CustomConnectionPool connectionPool = CustomConnectionPool.getConnectionPool(5);
         ExecutorService threadPool = Executors.newFixedThreadPool(7);
 
         threadPool.submit(new Task(1, connectionPool));

@@ -108,7 +108,6 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     @Override
     public int calculateTotalSalary() {
 //        int totalSalary = 0;
-        //TODO stream done
         int totalSalary = productionLines.stream()
                 .map(ProductionLine::calculateTotalSalary)
                 .reduce(0, Integer::sum);
@@ -149,7 +148,6 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     @Override
     public Set<Employee> workingEmployees() {
         Set<Employee> employees = new HashSet<>();
-        //TODO stream done
         productionLines.stream()
                 .map(ProductionLine::workingEmployees)
                 .forEach(employees::addAll);
@@ -163,7 +161,6 @@ public class Factory implements SalaryCalculation, EmployeeListing, IncomeNettoC
     @Override
     public int calculateTotalIncomeNetto() {
 //         int income = 0;
-         //TODO stream done
 //        for (ProductionLine productionLine : productionLines) {
 //            income += productionLine.calculateTotalIncomeNetto();
 //        }

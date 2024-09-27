@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import solvd.laba.factory.Main;
 import solvd.laba.factory.exceptions.InvalidStringException;
 import solvd.laba.factory.production.Factory;
 
@@ -16,8 +15,9 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
-public class Company {
+public class Company implements DataSending {
     static final Logger LOGGER = LogManager.getLogger(Company.class);
     private String name;
     private Set<Factory> factories;
@@ -37,7 +37,6 @@ public class Company {
         this.name = name;
     }
 
-    // TODO optional done
     public Optional<Set<Factory>> getFactories() {
         return Optional.ofNullable(factories);
     }
@@ -72,7 +71,6 @@ public class Company {
             LOGGER.info("Previous report: \n{}", oldReport);
             String[] data = StringUtils.split(oldReport, "\n");
 //            int total = 0;
-            //TODO stream done
             int total = Arrays.stream(data)
                     .map(str -> StringUtils.split(str, ":")[1] )
                     .map(StringUtils::trim)
@@ -85,18 +83,25 @@ public class Company {
         } catch (NoSuchFileException e) {
             LOGGER.info("Generating new file");
         }
-        AtomicReference<String> newReport = new AtomicReference<>("");
-        //TODO stream done
-//        final String[] finalNewReport = {newReport[0]};
-        factories.stream()
-                .map(factory -> StringUtils.joinWith(": ", factory.toString(), String.valueOf(factory.calculateTotalIncomeNetto())))
-                .map(tmp -> StringUtils.appendIfMissing(tmp, "\n"))
-                .forEach(tmp -> newReport.set(StringUtils.joinWith(newReport.get(), tmp)));
+        String newReport = createReport();
 //        for (Factory factory : factories) {
 //            String tmp = StringUtils.joinWith(": ", factory.toString(), String.valueOf(factory.calculateTotalIncomeNetto()));
 //            tmp = StringUtils.appendIfMissing(tmp, "\n");
 //            newReport = StringUtils.joinWith(newReport, tmp);
 //        }
-        FileUtils.write(file, newReport.get(), StandardCharsets.UTF_8);
+        FileUtils.write(file, newReport, StandardCharsets.UTF_8);
+    }
+
+    public void sendReport(Consumer<String> sendingFuntion) {
+        sendData(sendingFuntion, this::createReport);
+    }
+
+    private String createReport() {
+        AtomicReference<String> newReport = new AtomicReference<>("");
+        factories.stream()
+                .map(factory -> StringUtils.joinWith(": ", factory.toString(), String.valueOf(factory.calculateTotalIncomeNetto())))
+                .map(tmp -> StringUtils.appendIfMissing(tmp, "\n"))
+                .forEach(tmp -> newReport.set(StringUtils.joinWith(newReport.get(), tmp)));
+        return String.valueOf(newReport);
     }
 }

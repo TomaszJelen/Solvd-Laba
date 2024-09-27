@@ -1,6 +1,5 @@
 package solvd.laba.factory.enums;
 
-//TODO enum done?
 public enum PowerConsumption {
     HIGH(10000),
     MEDIUM(1000),

@@ -65,15 +65,14 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
         return name.hashCode();
     }
 
-    //TODO stream done
     @Override
     public int calculateTotalExpense() {
 //        int payment = 0;
 //        for (Map.Entry<String, Integer> part : parts.entrySet()) {
 //            payment += part.getValue();
 //        }
-        return parts.entrySet().stream()
-                .map(Map.Entry::getValue)
+        return parts.values().stream()
+//                .map(Map.Entry::getValue)
                 .reduce(0, Integer::sum);
     }
 
@@ -90,4 +89,10 @@ public class Supplier implements ExpenseCalculation, LengthOfServiceCalculation 
     public Optional<Integer> getPartsValue(String name) {
         return Optional.of(parts.get(name));
     }
+
+    public void setPartsValue(String name, Integer value) {
+        parts.put(name, value);
+    }
+
+
 }

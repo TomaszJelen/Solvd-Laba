@@ -86,7 +86,6 @@ public class ProductionLine implements SalaryCalculation, EmployeeListing, Incom
     @Override
     public int calculateTotalSalary() {
 //        int totalSalary = 0;
-        //TODO stream done
         int totalSalary = workstations.stream()
                 .map(Workstation::calculateSalary)
                 .reduce(0, Integer::sum);

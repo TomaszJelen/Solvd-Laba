@@ -1,6 +1,5 @@
 package solvd.laba.factory.enums;
 
-//TODO enum done?
 public enum Currency {
     EURO("EUR","Euro"),
     ZLOTY("PLN", "Zloty"),

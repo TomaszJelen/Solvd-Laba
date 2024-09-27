@@ -1,6 +1,5 @@
 package solvd.laba.factory.enums;
 
-//TODO enum done?
 public enum Country {
     GER("DE", "Germany"),
     FR("FR", "France"),

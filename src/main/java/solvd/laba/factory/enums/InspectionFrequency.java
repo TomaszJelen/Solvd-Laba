@@ -1,6 +1,5 @@
 package solvd.laba.factory.enums;
 
-//TODO enum done?
 public enum InspectionFrequency {
     WEEKLY("Monday"),
     MONTHLY("First monday of month"),
