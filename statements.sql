@@ -127,18 +127,18 @@ ON bg.books_id = b.id
 INNER JOIN genres g
 ON bg.genres_id = g.id; 
 
-INSERT INTO `borrowings&reservations` (readers_id, books_id, librarians_id, `from`)
+INSERT INTO `BorrowingsReservations` (readers_id, books_id, librarians_id, `from`)
 values (1, 1,  2, '2025-01-01');
-SELECT * FROM `borrowings&reservations`;
-SELECT readers_id, COUNT(*) FROM `borrowings&reservations`
+SELECT * FROM `BorrowingsReservations`;
+SELECT readers_id, COUNT(*) FROM `BorrowingsReservations`
 GROUP BY readers_id;
-SELECT books_id, COUNT(*) FROM `borrowings&reservations`
+SELECT books_id, COUNT(*) FROM `BorrowingsReservations`
 GROUP BY books_id
 HAVING COUNT(*) > 1;
 
 -----------------------------------------------
 SELECT g.name, a.name, a.surname, c.operating_system, s.`from`, s.`to`  FROM readers r
-INNER JOIN `borrowings&reservations` br
+INNER JOIN `BorrowingsReservations` br
 ON r.id = br.readers_id
 INNER JOIN librarians l
 ON br.librarians_id = l.id
@@ -164,9 +164,9 @@ WHERE r.name = 'John' AND r.surname = 'Smith';
 --------------------------------------------------
 
 
-DELETE FROM `borrowings&reservations`
+DELETE FROM `BorrowingsReservations`
 WHERE id > 0;
-ALTER TABLE `borrowings&reservations` AUTO_INCREMENT = 1;
+ALTER TABLE `BorrowingsReservations` AUTO_INCREMENT = 1;
 
 TRUNCATE table books_has_genres;
 

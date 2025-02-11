@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Room>
+    <id>1</id>
+    <purpose>Main room</purpose>
+    <bookshelves>
+        <Bookshelf>
+            <id>1</id>
+            <avgCapacity>1000</avgCapacity>
+            <books>
+                <Book>
+                    <id>1</id>
+                    <title>Divine comedy</title>
+                    <authors>
+                        <Author>
+                            <id>1</id>
+                            <name>Dante</name>
+                            <surname>Alighieri</surname>
+                        </Author>
+                    </authors>
+                    <genres>
+                        <Genre>
+                            <id>1</id>
+                            <name>fiction</name>
+                        </Genre>
+                    </genres>
+                </Book>
+                <Book>
+                    <id>2</id>
+                    <title>Gesta principum Polonorum</title>
+                    <authors>
+                        <Author>
+                            <id>2</id>
+                            <name>Gallus</name>
+                            <surname>Anonymus</surname>
+                        </Author>
+                    </authors>
+                    <genres>
+                        <Genre>
+                            <id>2</id>
+                            <name>chronicle</name>
+                        </Genre>
+                    </genres>
+                </Book>
+            </books>
+        </Bookshelf>
+    </bookshelves>
+</Room>

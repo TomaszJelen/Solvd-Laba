@@ -5,19 +5,21 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema library
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema library
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `library` DEFAULT CHARACTER SET utf8 ;
+USE `library` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Rooms`
+-- Table `library`.`Rooms`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Rooms` (
+DROP TABLE IF EXISTS `library`.`Rooms` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Rooms` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `purpose` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -25,9 +27,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Bookshelves`
+-- Table `library`.`Bookshelves`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Bookshelves` (
+DROP TABLE IF EXISTS `library`.`Bookshelves` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Bookshelves` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `rooms_id` BIGINT NOT NULL,
   `avg_capacity` INT NOT NULL,
@@ -35,16 +39,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Bookshelves` (
   INDEX `fk_bookshelves_rooms1_idx` (`rooms_id` ASC) VISIBLE,
   CONSTRAINT `fk_bookshelves_rooms1`
     FOREIGN KEY (`rooms_id`)
-    REFERENCES `mydb`.`Rooms` (`id`)
+    REFERENCES `library`.`Rooms` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Books`
+-- Table `library`.`Books`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Books` (
+DROP TABLE IF EXISTS `library`.`Books` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Books` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `bookshelves_id` BIGINT NOT NULL,
   `title` VARCHAR(45) NOT NULL,
@@ -52,16 +58,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Books` (
   INDEX `fk_books_bookshelves_idx` (`bookshelves_id` ASC) VISIBLE,
   CONSTRAINT `fk_books_bookshelves`
     FOREIGN KEY (`bookshelves_id`)
-    REFERENCES `mydb`.`Bookshelves` (`id`)
+    REFERENCES `library`.`Bookshelves` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Authors`
+-- Table `library`.`Authors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Authors` (
+DROP TABLE IF EXISTS `library`.`Authors` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Authors` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
@@ -70,9 +78,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Librarians`
+-- Table `library`.`Librarians`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Librarians` (
+DROP TABLE IF EXISTS `library`.`Librarians` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Librarians` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
@@ -81,9 +91,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Shifts`
+-- Table `library`.`Shifts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Shifts` (
+DROP TABLE IF EXISTS `library`.`Shifts` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Shifts` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `librarians_id` BIGINT NOT NULL,
   `from` TIME NOT NULL,
@@ -92,16 +104,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Shifts` (
   INDEX `fk_shifts_librarians1_idx` (`librarians_id` ASC) VISIBLE,
   CONSTRAINT `fk_shifts_librarians1`
     FOREIGN KEY (`librarians_id`)
-    REFERENCES `mydb`.`Librarians` (`id`)
+    REFERENCES `library`.`Librarians` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Readers`
+-- Table `library`.`Readers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Readers` (
+DROP TABLE IF EXISTS `library`.`Readers` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Readers` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
@@ -110,9 +124,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Computers`
+-- Table `library`.`Computers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Computers` (
+DROP TABLE IF EXISTS `library`.`Computers` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Computers` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `rooms_id` BIGINT NOT NULL,
   `operating_system` VARCHAR(45) NOT NULL,
@@ -120,16 +136,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Computers` (
   INDEX `fk_computers_rooms1_idx` (`rooms_id` ASC) VISIBLE,
   CONSTRAINT `fk_computers_rooms1`
     FOREIGN KEY (`rooms_id`)
-    REFERENCES `mydb`.`Rooms` (`id`)
+    REFERENCES `library`.`Rooms` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Borrowings&Reservations`
+-- Table `library`.`BorrowingsReservations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Borrowings&Reservations` (
+DROP TABLE IF EXISTS `library`.`BorrowingsReservations` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`BorrowingsReservations` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `readers_id` BIGINT NOT NULL,
   `books_id` BIGINT NOT NULL,
@@ -142,26 +160,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Borrowings&Reservations` (
   INDEX `fk_borrowings_librarians1_idx` (`librarians_id` ASC) VISIBLE,
   CONSTRAINT `fk_borrowings_readers1`
     FOREIGN KEY (`readers_id`)
-    REFERENCES `mydb`.`Readers` (`id`)
+    REFERENCES `library`.`Readers` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_borrowings_books1`
     FOREIGN KEY (`books_id`)
-    REFERENCES `mydb`.`Books` (`id`)
+    REFERENCES `library`.`Books` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_borrowings_librarians1`
     FOREIGN KEY (`librarians_id`)
-    REFERENCES `mydb`.`Librarians` (`id`)
+    REFERENCES `library`.`Librarians` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Books_has_authors`
+-- Table `library`.`Books_has_authors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Books_has_authors` (
+DROP TABLE IF EXISTS `library`.`Books_has_authors` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Books_has_authors` (
   `books_id` BIGINT NOT NULL,
   `authors_id` BIGINT NOT NULL,
   PRIMARY KEY (`books_id`, `authors_id`),
@@ -169,21 +189,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Books_has_authors` (
   INDEX `fk_books_has_authors_books1_idx` (`books_id` ASC) VISIBLE,
   CONSTRAINT `fk_books_has_authors_books1`
     FOREIGN KEY (`books_id`)
-    REFERENCES `mydb`.`Books` (`id`)
+    REFERENCES `library`.`Books` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_books_has_authors_authors1`
     FOREIGN KEY (`authors_id`)
-    REFERENCES `mydb`.`Authors` (`id`)
+    REFERENCES `library`.`Authors` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Genres`
+-- Table `library`.`Genres`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Genres` (
+DROP TABLE IF EXISTS `library`.`Genres` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Genres` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -191,9 +213,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Books_has_Genres`
+-- Table `library`.`Books_has_Genres`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Books_has_Genres` (
+DROP TABLE IF EXISTS `library`.`Books_has_Genres` ;
+
+CREATE TABLE IF NOT EXISTS `library`.`Books_has_Genres` (
   `books_id` BIGINT NOT NULL,
   `genres_id` BIGINT NOT NULL,
   PRIMARY KEY (`books_id`, `genres_id`),
@@ -201,12 +225,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Books_has_Genres` (
   INDEX `fk_Books_has_Genres_Books1_idx` (`books_id` ASC) VISIBLE,
   CONSTRAINT `fk_Books_has_Genres_Books1`
     FOREIGN KEY (`books_id`)
-    REFERENCES `mydb`.`Books` (`id`)
+    REFERENCES `library`.`Books` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Books_has_Genres_Genres1`
     FOREIGN KEY (`genres_id`)
-    REFERENCES `mydb`.`Genres` (`id`)
+    REFERENCES `library`.`Genres` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
