@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<BorrowingReservation>
+    <id>1</id>
+    <from>2025-02-13</from>
+    <to>2025-02-14</to>
+</BorrowingReservation>

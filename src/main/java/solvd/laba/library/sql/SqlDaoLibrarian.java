@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoLibrarian extends SqlAbstractDao implements IDaoLibrarian {
     @Override
-    public Librarian create(Librarian entity) throws SQLException, InterruptedException {
+    public Librarian create(Librarian entity) {
         String sqlStatement = "INSERT INTO librarians (name, surname) VALUES (?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -20,12 +20,16 @@ public class SqlDaoLibrarian extends SqlAbstractDao implements IDaoLibrarian {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Librarian read(Long id) throws SQLException, InterruptedException {
+    public Librarian read(Long id) {
         String sqlStatement = "SELECT * FROM librarians WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -40,11 +44,15 @@ public class SqlDaoLibrarian extends SqlAbstractDao implements IDaoLibrarian {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Librarian> readAll() throws SQLException, InterruptedException {
+    public List<Librarian> readAll() {
         String sqlStatement = "SELECT * FROM librarians";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -58,11 +66,15 @@ public class SqlDaoLibrarian extends SqlAbstractDao implements IDaoLibrarian {
                 }
                 return librarians;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Librarian update(Librarian entity) throws SQLException, InterruptedException {
+    public Librarian update(Librarian entity) {
         String sqlStatement = "UPDATE librarians SET name = ?, surname = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -71,18 +83,26 @@ public class SqlDaoLibrarian extends SqlAbstractDao implements IDaoLibrarian {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM librarians WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

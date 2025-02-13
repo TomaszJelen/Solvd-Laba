@@ -9,7 +9,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BorrowingReservationService {
-    IDaoBorrowingReservation daoBorrowingReservation =  new SqlDaoBorrowingReservation();
+    IDaoBorrowingReservation daoBorrowingReservation;
+
+    public BorrowingReservationService(IDaoBorrowingReservation daoBorrowingReservation) {
+        this.daoBorrowingReservation = daoBorrowingReservation;
+    }
+
     public Long createBorrowingReservation(BorrowingReservation entity) throws SQLException, InterruptedException {
         return daoBorrowingReservation.create(entity).getId();
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
     @Override
-    public Bookshelf create(Bookshelf entity) throws SQLException, InterruptedException {
+    public Bookshelf create(Bookshelf entity) {
         String sqlStatement = "INSERT INTO bookshelves (rooms_id, avg_capacity) VALUES (?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getRoomId());
@@ -20,12 +20,16 @@ public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Bookshelf read(Long id) throws SQLException, InterruptedException {
+    public Bookshelf read(Long id) {
         String sqlStatement = "SELECT * FROM bookshelves WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -40,11 +44,15 @@ public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Bookshelf> readAll() throws SQLException, InterruptedException {
+    public List<Bookshelf> readAll() {
         String sqlStatement = "SELECT * FROM bookshelves";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -58,11 +66,15 @@ public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
                 }
                 return bookshelves;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Bookshelf> readByRoom(Long roomId) throws SQLException, InterruptedException {
+    public List<Bookshelf> readByRoom(Long roomId) {
         String sqlStatement = "SELECT * FROM bookshelves WHERE rooms_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, roomId);
@@ -77,11 +89,15 @@ public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
                 }
                 return bookshelves;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Bookshelf update(Bookshelf entity) throws SQLException, InterruptedException {
+    public Bookshelf update(Bookshelf entity) {
         String sqlStatement = "UPDATE bookshelves SET rooms_id = ?, avg_capacity = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getRoomId());
@@ -90,18 +106,26 @@ public class SqlDaoBookshelf extends SqlAbstractDao implements IDaoBookshelf {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM bookshelves WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

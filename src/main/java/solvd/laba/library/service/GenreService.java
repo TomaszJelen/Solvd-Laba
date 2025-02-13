@@ -8,7 +8,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GenreService {
-    IDaoGenre daoGenre =  new SqlDaoGenre();
+    IDaoGenre daoGenre;
+
+    public GenreService(IDaoGenre daoGenre) {
+        this.daoGenre = daoGenre;
+    }
+
     public Long createGenre(Genre entity) throws SQLException, InterruptedException {
         return daoGenre.create(entity).getId();
     }

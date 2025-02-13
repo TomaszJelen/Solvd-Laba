@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoReader extends SqlAbstractDao implements IDaoReader {
     @Override
-    public Reader create(Reader entity) throws SQLException, InterruptedException {
+    public Reader create(Reader entity) {
         String sqlStatement = "INSERT INTO readers (name, surname) VALUES (?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -20,12 +20,16 @@ public class SqlDaoReader extends SqlAbstractDao implements IDaoReader {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Reader read(Long id) throws SQLException, InterruptedException {
+    public Reader read(Long id) {
         String sqlStatement = "SELECT * FROM readers WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -40,11 +44,15 @@ public class SqlDaoReader extends SqlAbstractDao implements IDaoReader {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Reader> readAll() throws SQLException, InterruptedException {
+    public List<Reader> readAll() {
         String sqlStatement = "SELECT * FROM readers";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -58,11 +66,15 @@ public class SqlDaoReader extends SqlAbstractDao implements IDaoReader {
                 }
                 return readers;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Reader update(Reader entity) throws SQLException, InterruptedException {
+    public Reader update(Reader entity) {
         String sqlStatement = "UPDATE readers SET name = ?, surname = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -71,18 +83,26 @@ public class SqlDaoReader extends SqlAbstractDao implements IDaoReader {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM readers WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

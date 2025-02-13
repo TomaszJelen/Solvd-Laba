@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoRoom extends SqlAbstractDao implements IDaoRoom {
     @Override
-    public Room create(Room entity) throws SQLException, InterruptedException {
+    public Room create(Room entity) {
         String sqlStatement = "INSERT INTO rooms (purpose) VALUES (?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getPurpose());
@@ -19,12 +19,16 @@ public class SqlDaoRoom extends SqlAbstractDao implements IDaoRoom {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Room read(Long id) throws SQLException, InterruptedException {
+    public Room read(Long id) {
         String sqlStatement = "SELECT * FROM rooms WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -38,11 +42,15 @@ public class SqlDaoRoom extends SqlAbstractDao implements IDaoRoom {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Room> readAll() throws SQLException, InterruptedException {
+    public List<Room> readAll() {
         String sqlStatement = "SELECT * FROM rooms";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -55,11 +63,15 @@ public class SqlDaoRoom extends SqlAbstractDao implements IDaoRoom {
                 }
                 return rooms;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Room update(Room entity) throws SQLException, InterruptedException {
+    public Room update(Room entity) {
         String sqlStatement = "UPDATE rooms SET purpose = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getPurpose());
@@ -67,18 +79,26 @@ public class SqlDaoRoom extends SqlAbstractDao implements IDaoRoom {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM rooms WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

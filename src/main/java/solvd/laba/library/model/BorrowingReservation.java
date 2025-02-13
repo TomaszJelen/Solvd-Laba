@@ -1,10 +1,24 @@
 package solvd.laba.library.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import solvd.laba.library.jaxb.DateAdapter;
+
 import java.sql.Date;
 
+@XmlRootElement(name = "BorrowingReservation")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BorrowingReservation {
+    @XmlElement(name = "id")
     private Long id;
+    @XmlElement(name = "from")
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date from;
+    @XmlElement(name = "to")
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date to;
     private Long readerId;
     private Long bookId;

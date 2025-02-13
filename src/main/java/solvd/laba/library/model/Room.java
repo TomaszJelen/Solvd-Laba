@@ -1,12 +1,22 @@
 package solvd.laba.library.model;
 
+import jakarta.xml.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name = "Room")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Room {
+    @XmlElement(name = "id")
     private Long id;
+
+    @XmlElement(name = "purpose")
     private String purpose;
     private List<Computer> computers = new ArrayList<>();
+
+    @XmlElementWrapper(name = "bookshelves")
+    @XmlElement(name = "Bookshelf")
     private List<Bookshelf> bookshelves = new ArrayList<>();
 
     public Long getId() {

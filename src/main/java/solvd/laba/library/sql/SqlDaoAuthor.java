@@ -10,7 +10,7 @@ import java.util.List;
 public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
 
     @Override
-    public Author create(Author entity) throws SQLException, InterruptedException {
+    public Author create(Author entity) {
         String sqlStatement = "INSERT INTO authors (name, surname) VALUES (?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -21,12 +21,16 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Author read(Long id) throws SQLException, InterruptedException {
+    public Author read(Long id) {
         String sqlStatement = "SELECT * FROM authors WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -41,11 +45,15 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Author> readAll() throws SQLException, InterruptedException {
+    public List<Author> readAll() {
         String sqlStatement = "SELECT * FROM authors";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -59,11 +67,15 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
                 }
                 return authors;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Author> readByBook(Long bookId) throws SQLException, InterruptedException {
+    public List<Author> readByBook(Long bookId) {
         String sqlStatement = "SELECT * FROM books_has_authors WHERE books_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, bookId);
@@ -75,12 +87,16 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
                 }
                 return authors;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     @Override
-    public Author update(Author entity) throws SQLException, InterruptedException {
+    public Author update(Author entity) {
         String sqlStatement = "UPDATE authors SET name = ?, surname = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -89,16 +105,24 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM books_has_authors WHERE authors_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         sqlStatement = "DELETE FROM authors WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
@@ -106,6 +130,10 @@ public class SqlDaoAuthor extends SqlAbstractDao implements IDaoAuthor {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

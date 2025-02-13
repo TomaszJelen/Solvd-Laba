@@ -15,9 +15,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class RoomService {
-    IDaoRoom daoRoom =  new SqlDaoRoom();
-    IDaoComputer daoComputer =  new SqlDaoComputer();
-    IDaoBookshelf daoBookshelf =  new SqlDaoBookshelf();
+    IDaoRoom daoRoom;
+    IDaoComputer daoComputer;
+    IDaoBookshelf daoBookshelf;
+
+    public RoomService(IDaoRoom daoRoom, IDaoComputer daoComputer, IDaoBookshelf daoBookshelf) {
+        this.daoRoom = daoRoom;
+        this.daoComputer = daoComputer;
+        this.daoBookshelf = daoBookshelf;
+    }
+
     public Long createRoom(Room entity) throws SQLException, InterruptedException {
         return daoRoom.create(entity).getId();
     }

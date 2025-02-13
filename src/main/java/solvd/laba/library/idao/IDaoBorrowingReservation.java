@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IDaoBorrowingReservation extends IDao<BorrowingReservation> {
-    List<BorrowingReservation> readByReader(Long readerId) throws SQLException, InterruptedException;
+    List<BorrowingReservation> readByReader(Long readerId);
 
-    List<BorrowingReservation> readByBook(Long bookId) throws SQLException, InterruptedException;
+    List<BorrowingReservation> readByBook(Long bookId);
 
-    List<BorrowingReservation> readByLibrarian(Long librarianId) throws SQLException, InterruptedException;
+    List<BorrowingReservation> readByLibrarian(Long librarianId);
 }

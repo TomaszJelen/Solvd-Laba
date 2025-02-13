@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBorrowingReservation {
     @Override
-    public BorrowingReservation create(BorrowingReservation entity) throws SQLException, InterruptedException {
+    public BorrowingReservation create(BorrowingReservation entity) {
         String sqlStatement = "INSERT INTO `BorrowingsReservations` (readers_id, books_id, librarians_id, `from`) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getReaderId());
@@ -23,12 +23,16 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public BorrowingReservation read(Long id) throws SQLException, InterruptedException {
+    public BorrowingReservation read(Long id) {
         String sqlStatement = "SELECT * FROM `BorrowingsReservations` WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -46,11 +50,15 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<BorrowingReservation> readAll() throws SQLException, InterruptedException {
+    public List<BorrowingReservation> readAll() {
         String sqlStatement = "SELECT * FROM `BorrowingsReservations`";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -67,11 +75,15 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                 }
                 return borrowingReservations;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<BorrowingReservation> readByReader(Long readerId) throws SQLException, InterruptedException {
+    public List<BorrowingReservation> readByReader(Long readerId) {
         String sqlStatement = "SELECT * FROM `BorrowingsReservations` WHERE readers_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, readerId);
@@ -89,11 +101,15 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                 }
                 return borrowingReservations;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<BorrowingReservation> readByBook(Long bookId) throws SQLException, InterruptedException {
+    public List<BorrowingReservation> readByBook(Long bookId) {
         String sqlStatement = "SELECT * FROM `BorrowingsReservations` WHERE books_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, bookId);
@@ -111,11 +127,15 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                 }
                 return borrowingReservations;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<BorrowingReservation> readByLibrarian(Long librarianId) throws SQLException, InterruptedException {
+    public List<BorrowingReservation> readByLibrarian(Long librarianId) {
         String sqlStatement = "SELECT * FROM `BorrowingsReservations` WHERE librarians_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, librarianId);
@@ -133,11 +153,15 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
                 }
                 return borrowingReservations;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public BorrowingReservation update(BorrowingReservation entity) throws SQLException, InterruptedException {
+    public BorrowingReservation update(BorrowingReservation entity) {
         String sqlStatement = "UPDATE `BorrowingsReservations` SET readers_id = ?, books_id = ?, librarians_id = ?, `from` = ?, `to` = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getReaderId());
@@ -149,18 +173,26 @@ public class SqlDaoBorrowingReservation extends SqlAbstractDao implements IDaoBo
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM `BorrowingsReservations` WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

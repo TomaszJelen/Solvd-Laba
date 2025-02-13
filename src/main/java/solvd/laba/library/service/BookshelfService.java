@@ -13,8 +13,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BookshelfService {
-    IDaoBookshelf daoBookshelf =  new SqlDaoBookshelf();
-    IDaoBook daoBook =  new SqlDaoBook();
+    IDaoBookshelf daoBookshelf;
+    IDaoBook daoBook;
+
+    public BookshelfService(IDaoBookshelf daoBookshelf, IDaoBook daoBook) {
+        this.daoBookshelf = daoBookshelf;
+        this.daoBook = daoBook;
+    }
+
     public Long createBookshelf(Bookshelf entity) throws SQLException, InterruptedException {
         Long id = daoBookshelf.create(entity).getId();
         for (Book book : entity.getBooks()) {

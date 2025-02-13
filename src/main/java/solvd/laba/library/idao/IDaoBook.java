@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IDaoBook extends IDao<Book> {
-    void createConnectionToAuthors(Long bookId, Long authorId) throws SQLException, InterruptedException;
+    void createConnectionToAuthors(Long bookId, Long authorId);
 
-    List<Book> readByBookshelf(Long bookshelfId) throws SQLException, InterruptedException;
+    List<Book> readByBookshelf(Long bookshelfId);
 
-    void removeConnections(Long id) throws SQLException, InterruptedException;
+    void removeConnections(Long id);
 
-    void createConnectionToGenres(Long bookId, Long genreId) throws SQLException, InterruptedException;
+    void createConnectionToGenres(Long bookId, Long genreId);
 }

@@ -6,5 +6,5 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IDaoGenre extends IDao<Genre> {
-    List<Genre> readByBook(Long bookId) throws SQLException, InterruptedException;
+    List<Genre> readByBook(Long bookId);
 }

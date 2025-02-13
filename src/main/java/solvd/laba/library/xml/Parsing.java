@@ -19,12 +19,12 @@ public class Parsing {
         Schema schema = null;
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory schemaFactory = SchemaFactory.newInstance(language);
-        schema = schemaFactory.newSchema(new File("librarySchema.xml"));
+        schema = schemaFactory.newSchema(new File("src/main/resources/librarySchema.xml"));
         factory.setSchema(schema);
 
         SAXParser saxParser = factory.newSAXParser();
         RoomHandler roomHandler = new RoomHandler();
-        saxParser.parse("library.xml", roomHandler);
+        saxParser.parse("src/main/resources/library.xml", roomHandler);
         Room result = roomHandler.getRoom();
         System.out.println(result);
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
     @Override
-    public Genre create(Genre entity) throws SQLException, InterruptedException {
+    public Genre create(Genre entity) {
         String sqlStatement = "INSERT INTO genres (name) VALUES (?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -19,12 +19,16 @@ public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Genre read(Long id) throws SQLException, InterruptedException {
+    public Genre read(Long id) {
         String sqlStatement = "SELECT * FROM genres WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -38,11 +42,15 @@ public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Genre> readAll() throws SQLException, InterruptedException {
+    public List<Genre> readAll() {
         String sqlStatement = "SELECT * FROM genres";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -55,11 +63,15 @@ public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
                 }
                 return genres;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Genre> readByBook(Long bookId) throws SQLException, InterruptedException {
+    public List<Genre> readByBook(Long bookId) {
         String sqlStatement = "SELECT * FROM books_has_genres WHERE books_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, bookId);
@@ -71,11 +83,15 @@ public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
                 }
                 return genres;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Genre update(Genre entity) throws SQLException, InterruptedException {
+    public Genre update(Genre entity) {
         String sqlStatement = "UPDATE genres SET name = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, entity.getName());
@@ -83,23 +99,35 @@ public class SqlDaoGenre extends SqlAbstractDao implements IDaoGenre {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM books_has_genres WHERE genres_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-         sqlStatement = "DELETE FROM genres WHERE id = ?";
+        sqlStatement = "DELETE FROM genres WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

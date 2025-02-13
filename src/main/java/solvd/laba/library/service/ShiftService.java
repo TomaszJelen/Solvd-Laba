@@ -8,7 +8,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ShiftService {
-    IDaoShift daoShift =  new SqlDaoShift();
+    IDaoShift daoShift;
+
+    public ShiftService(IDaoShift daoShift) {
+        this.daoShift = daoShift;
+    }
+
     public Long createShift(Shift entity) throws SQLException, InterruptedException {
         return daoShift.create(entity).getId();
     }

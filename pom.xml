@@ -66,6 +66,17 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+
+
+
+
+
 
     </dependencies>
 
@@ -76,11 +87,11 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.10.0</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.5.0</version>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                <version>3.5.0</version>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

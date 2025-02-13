@@ -8,7 +8,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AuthorService {
-    IDaoAuthor daoAuthor =  new SqlDaoAuthor();
+    IDaoAuthor daoAuthor;
+
+    public AuthorService(IDaoAuthor daoAuthor) {
+        this.daoAuthor = daoAuthor;
+    }
+
     public Long createAuthor(Author entity) throws SQLException, InterruptedException {
         return daoAuthor.create(entity).getId();
     }

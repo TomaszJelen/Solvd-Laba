@@ -17,10 +17,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BookService {
-    IDaoBook daoBook =  new SqlDaoBook();
-    IDaoBorrowingReservation daoBorrowingReservation =  new SqlDaoBorrowingReservation();
-    IDaoGenre daoGenre =  new SqlDaoGenre();
-    IDaoAuthor daoAuthor =  new SqlDaoAuthor();
+    IDaoBook daoBook;
+    IDaoBorrowingReservation daoBorrowingReservation;
+    IDaoGenre daoGenre;
+    IDaoAuthor daoAuthor;
+
+    public BookService(IDaoBook daoBook, IDaoBorrowingReservation daoBorrowingReservation, IDaoGenre daoGenre, IDaoAuthor daoAuthor) {
+        this.daoBook = daoBook;
+        this.daoBorrowingReservation = daoBorrowingReservation;
+        this.daoGenre = daoGenre;
+        this.daoAuthor = daoAuthor;
+    }
+
     public Long createBook(Book entity) throws SQLException, InterruptedException {
         Long id = daoBook.create(entity).getId();
         for (Genre genre : entity.getGenres()) {

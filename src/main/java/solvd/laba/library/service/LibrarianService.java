@@ -14,9 +14,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class LibrarianService {
-    IDaoLibrarian daoLibrarian =  new SqlDaoLibrarian();
-    IDaoShift daoShift =  new SqlDaoShift();
-    IDaoBorrowingReservation daoBorrowingReservation =  new SqlDaoBorrowingReservation();
+    IDaoLibrarian daoLibrarian;
+    IDaoShift daoShift;
+    IDaoBorrowingReservation daoBorrowingReservation;
+
+    public LibrarianService(IDaoLibrarian daoLibrarian, IDaoShift daoShift, IDaoBorrowingReservation daoBorrowingReservation) {
+        this.daoLibrarian = daoLibrarian;
+        this.daoShift = daoShift;
+        this.daoBorrowingReservation = daoBorrowingReservation;
+    }
+
     public Long createLibrarian(Librarian entity) throws SQLException, InterruptedException {
         Long id = daoLibrarian.create(entity).getId();
         for (Shift shift : entity.getShifts()) {

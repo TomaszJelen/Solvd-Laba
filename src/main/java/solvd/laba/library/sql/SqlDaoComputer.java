@@ -12,7 +12,7 @@ import static java.sql.DriverManager.getConnection;
 
 public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
     @Override
-    public Computer create(Computer entity) throws SQLException, InterruptedException {
+    public Computer create(Computer entity) {
         String sqlStatement = "INSERT INTO computers (rooms_id, operating_system) VALUES (?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getRoomId());
@@ -23,12 +23,16 @@ public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Computer read(Long id) throws SQLException, InterruptedException {
+    public Computer read(Long id) {
         String sqlStatement = "SELECT * FROM computers WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -43,11 +47,15 @@ public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Computer> readAll() throws SQLException, InterruptedException {
+    public List<Computer> readAll() {
         String sqlStatement = "SELECT * FROM computers";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -61,11 +69,15 @@ public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
                 }
                 return computers;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Computer> readByRoom(Long roomId) throws SQLException, InterruptedException {
+    public List<Computer> readByRoom(Long roomId) {
         String sqlStatement = "SELECT * FROM computers WHERE rooms_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, roomId);
@@ -80,11 +92,15 @@ public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
                 }
                 return computers;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Computer update(Computer entity) throws SQLException, InterruptedException {
+    public Computer update(Computer entity) {
         String sqlStatement = "UPDATE computers SET rooms_id = ?, operating_system = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getRoomId());
@@ -93,18 +109,26 @@ public class SqlDaoComputer extends SqlAbstractDao implements IDaoComputer {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM computers WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

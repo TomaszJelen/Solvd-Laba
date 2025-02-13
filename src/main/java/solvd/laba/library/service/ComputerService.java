@@ -8,7 +8,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ComputerService {
-    IDaoComputer daoComputer =  new SqlDaoComputer();
+    IDaoComputer daoComputer;
+
+    public ComputerService(IDaoComputer daoComputer) {
+        this.daoComputer = daoComputer;
+    }
+
     public Long createComputer(Computer entity) throws SQLException, InterruptedException {
         return daoComputer.create(entity).getId();
     }

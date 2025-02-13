@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
     @Override
-    public Shift create(Shift entity) throws SQLException, InterruptedException {
+    public Shift create(Shift entity) {
         String sqlStatement = "INSERT INTO shifts (librarians_id, `from`, `to`) VALUES (?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getLibrarianId());
@@ -21,12 +21,16 @@ public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
                     entity.setId(generatedKeys.getLong(1));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Shift read(Long id) throws SQLException, InterruptedException {
+    public Shift read(Long id) {
         String sqlStatement = "SELECT * FROM shifts WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
@@ -42,11 +46,15 @@ public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
                     return null;
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Shift> readAll() throws SQLException, InterruptedException {
+    public List<Shift> readAll() {
         String sqlStatement = "SELECT * FROM shifts";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
@@ -61,11 +69,15 @@ public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
                 }
                 return shifts;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Shift> readByLibrarian(Long librarianId) throws SQLException, InterruptedException {
+    public List<Shift> readByLibrarian(Long librarianId) {
         String sqlStatement = "SELECT * FROM shifts WHERE librarians_id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, librarianId);
@@ -81,11 +93,15 @@ public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
                 }
                 return shifts;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Shift update(Shift entity) throws SQLException, InterruptedException {
+    public Shift update(Shift entity) {
         String sqlStatement = "UPDATE shifts SET librarians_id = ?, `from` = ?, `to` = ? WHERE id = ?;";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, entity.getLibrarianId());
@@ -95,18 +111,26 @@ public class SqlDaoShift extends SqlAbstractDao implements IDaoShift {
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return entity;
     }
 
     @Override
-    public Long remove(Long id) throws SQLException, InterruptedException {
+    public Long remove(Long id) {
         String sqlStatement = "DELETE FROM shifts WHERE id = ?";
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             preparedStatement.setLong(1, id);
             if ( preparedStatement.executeUpdate() == 0) {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return id;
     }

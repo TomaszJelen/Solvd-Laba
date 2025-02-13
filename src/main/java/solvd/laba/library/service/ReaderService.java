@@ -12,8 +12,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ReaderService {
-    IDaoReader daoReader =  new SqlDaoReader();
-    IDaoBorrowingReservation daoBorrowingReservation =  new SqlDaoBorrowingReservation();
+    IDaoReader daoReader;
+    IDaoBorrowingReservation daoBorrowingReservation;
+
+    public ReaderService(IDaoReader daoReader, IDaoBorrowingReservation daoBorrowingReservation) {
+        this.daoReader = daoReader;
+        this.daoBorrowingReservation = daoBorrowingReservation;
+    }
+
     public Long createReader(Reader entity) throws SQLException, InterruptedException {
         return daoReader.create(entity).getId();
     }
