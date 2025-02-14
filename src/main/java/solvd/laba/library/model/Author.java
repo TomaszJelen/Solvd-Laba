@@ -1,6 +1,7 @@
 package solvd.laba.library.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -9,10 +10,13 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 //@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author {
+    @JsonProperty
     @XmlElement(name = "id")
     private Long id;
+    @JsonProperty
     @XmlElement(name = "name")
     private String name;
+    @JsonProperty
     @XmlElement(name = "surname")
     private String surname;
 

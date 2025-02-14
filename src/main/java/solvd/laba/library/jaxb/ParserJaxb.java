@@ -8,7 +8,7 @@ import solvd.laba.library.model.Room;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class Parser {
+public class ParserJaxb {
     public Room unmarshalRoom() {
         try {
             JAXBContext context = JAXBContext.newInstance(Room.class);

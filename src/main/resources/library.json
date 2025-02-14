@@ -1,0 +1,46 @@
+{
+  "id": "1",
+  "purpose": "Main room",
+  "bookshelves": [
+    {
+      "id": "1",
+      "avgCapacity": "1000",
+      "books": [
+        {
+          "id": "1",
+          "title": "Divine comedy",
+          "authors": [
+            {
+              "id": "1",
+              "name": "Dante",
+              "surname": "Alighieri"
+            }
+          ],
+          "genres": [
+            {
+              "id": "1",
+              "name": "fiction"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Gesta principum Polonorum",
+          "authors": [
+            {
+              "id": "2",
+              "name": "Gallus",
+              "surname": "Anonymus"
+            }
+          ],
+          "genres": [
+            {
+              "id": "2",
+              "name": "chronicle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

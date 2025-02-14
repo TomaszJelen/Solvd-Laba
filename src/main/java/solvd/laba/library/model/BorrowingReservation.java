@@ -1,5 +1,8 @@
 package solvd.laba.library.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -12,11 +15,15 @@ import java.sql.Date;
 @XmlRootElement(name = "BorrowingReservation")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BorrowingReservation {
+    @JsonProperty
     @XmlElement(name = "id")
     private Long id;
+    @JsonProperty
     @XmlElement(name = "from")
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date from;
+    @JsonProperty
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @XmlElement(name = "to")
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date to;

@@ -1,5 +1,6 @@
 package solvd.laba.library.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -8,16 +9,21 @@ import java.util.List;
 //@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
+    @JsonProperty
     @XmlElement(name = "id")
     private Long id;
+    @JsonProperty
     @XmlElement(name = "title")
     private String title;
+    @JsonProperty
     @XmlElementWrapper(name = "authors")
     @XmlElement(name = "Author")
     private List<Author> authors = new ArrayList<>();
+    @JsonProperty
     @XmlElementWrapper(name = "genres")
     @XmlElement(name = "Genre")
     private List<Genre> genres = new ArrayList<>();
+
     private List<BorrowingReservation> borrowingReservations = new ArrayList<>();
     private Long bookshelfId;
 
