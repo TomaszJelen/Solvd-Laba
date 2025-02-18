@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="solvd.laba.library.mybatis.IMappers.IMapperBookshelf">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="solvd.laba.library.model.Bookshelf">
+        INSERT INTO bookshelves (rooms_id, avg_capacity) VALUES (#{roomId}, #{avgCapacity})
+    </insert>
+    <update id="change" parameterType="solvd.laba.library.model.Bookshelf">
+        UPDATE bookshelves SET rooms_id = #{roomId}, avg_capacity = #{avgCapacity} WHERE id = #{id}
+    </update>
+    <select id="readAll" resultType="solvd.laba.library.model.Bookshelf">
+        SELECT * FROM bookshelves
+    </select>
+    <select id="read" parameterType="long" resultType="solvd.laba.library.model.Bookshelf">
+        SELECT * FROM bookshelves WHERE id = #{id}
+    </select>
+    <select id="readByRoom" parameterType="long" resultType="solvd.laba.library.model.Bookshelf">
+        SELECT * FROM bookshelves WHERE rooms_id = #{roomId}
+    </select>
+    <delete id="remove" parameterType="long">
+        DELETE FROM bookshelves WHERE id = #{id}
+    </delete>
+</mapper>

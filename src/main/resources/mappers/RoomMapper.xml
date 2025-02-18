@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="solvd.laba.library.mybatis.IMappers.IMapperRoom">
+<!--    <resultMap id="result" type="solvd.laba.library.model.Room">-->
+<!--        <result-->
+<!--    </resultMap>-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="solvd.laba.library.model.Room">
+        INSERT INTO rooms (purpose) VALUES (#{purpose})
+    </insert>
+    <update id="change" parameterType="solvd.laba.library.model.Room">
+        UPDATE rooms SET purpose = #{purpose} WHERE id =#{id}
+    </update>
+    <select id="readAll" resultType="solvd.laba.library.model.Room">
+        SELECT * FROM rooms
+    </select>
+    <select id="read" parameterType="long" resultType="solvd.laba.library.model.Room">
+        SELECT * FROM rooms WHERE id =#{id}
+    </select>
+    <delete id="remove" parameterType="long">
+        DELETE FROM rooms WHERE id =#{id}
+    </delete>
+</mapper>
