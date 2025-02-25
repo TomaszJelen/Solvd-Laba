@@ -40,4 +40,14 @@ public class Reader {
     public void setBorrowingReservations(List<BorrowingReservation> borrowingReservations) {
         this.borrowingReservations = borrowingReservations;
     }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", borrowingReservations=" + borrowingReservations +
+                '}';
+    }
 }

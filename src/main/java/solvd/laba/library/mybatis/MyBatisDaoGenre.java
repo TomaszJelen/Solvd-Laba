@@ -13,63 +13,63 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class MyBatisDaoGenre implements IDaoGenre {
+public class MyBatisDaoGenre extends MyBatisDao<Genre, IMapperGenre> implements IDaoGenre {
 
-    @Override
-    public Genre create(Genre entity) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
-                iDaoGenre.insert(entity);
-                session.commit();
-                return entity;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Genre read(Long id) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
-                return iDaoGenre.read(id);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public List<Genre> readAll() {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
-                return iDaoGenre.readAll();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Genre update(Genre entity) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
-                iDaoGenre.change(entity);
-                session.commit();
-                return entity;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @Override
+//    public Genre create(Genre entity) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
+//                iDaoGenre.insert(entity);
+//                session.commit();
+//                return entity;
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Genre read(Long id) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
+//                return iDaoGenre.read(id);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public List<Genre> readAll() {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
+//                return iDaoGenre.readAll();
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Genre update(Genre entity) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperGenre iDaoGenre = session.getMapper(IMapperGenre.class);
+//                iDaoGenre.change(entity);
+//                session.commit();
+//                return entity;
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Override
     public Long remove(Long id) {

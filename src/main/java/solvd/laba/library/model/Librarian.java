@@ -49,4 +49,15 @@ public class Librarian {
     public void setShifts(List<Shift> shifts) {
         this.shifts = shifts;
     }
+
+    @Override
+    public String toString() {
+        return "Librarian{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", borrowingReservations=" + borrowingReservations +
+                ", shifts=" + shifts +
+                '}';
+    }
 }

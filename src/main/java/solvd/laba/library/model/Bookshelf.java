@@ -53,4 +53,14 @@ public class Bookshelf {
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
+
+    @Override
+    public String toString() {
+        return "Bookshelf{" +
+                "id=" + id +
+                ", avgCapacity=" + avgCapacity +
+                ", books=" + books +
+                ", roomId=" + roomId +
+                '}';
+    }
 }

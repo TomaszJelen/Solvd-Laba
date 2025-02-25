@@ -52,4 +52,14 @@ public class Room {
     public void setBookshelves(List<Bookshelf> bookshelves) {
         this.bookshelves = bookshelves;
     }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", purpose='" + purpose + '\'' +
+                ", computers=" + computers +
+                ", bookshelves=" + bookshelves +
+                '}';
+    }
 }

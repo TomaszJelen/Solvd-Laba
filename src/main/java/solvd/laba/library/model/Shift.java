@@ -39,4 +39,14 @@ public class Shift {
     public void setLibrarianId(Long librarianId) {
         this.librarianId = librarianId;
     }
+
+    @Override
+    public String toString() {
+        return "Shift{" +
+                "id=" + id +
+                ", from=" + from +
+                ", to=" + to +
+                ", librarianId=" + librarianId +
+                '}';
+    }
 }

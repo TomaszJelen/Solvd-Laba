@@ -75,4 +75,16 @@ public class Book {
     public void setBookshelfId(Long bookshelfId) {
         this.bookshelfId = bookshelfId;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", authors=" + authors +
+                ", genres=" + genres +
+                ", borrowingReservations=" + borrowingReservations +
+                ", bookshelfId=" + bookshelfId +
+                '}';
+    }
 }

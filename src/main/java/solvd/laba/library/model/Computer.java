@@ -28,4 +28,13 @@ public class Computer {
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "id=" + id +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                ", roomId=" + roomId +
+                '}';
+    }
 }

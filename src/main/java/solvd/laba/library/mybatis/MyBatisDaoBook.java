@@ -13,77 +13,77 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class MyBatisDaoBook implements IDaoBook {
-    @Override
-    public Book create(Book entity) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
-                iDaoBook.insert(entity);
-                session.commit();
-                return entity;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Book read(Long id) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
-                return iDaoBook.read(id);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public List<Book> readAll() {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
-                return iDaoBook.readAll();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Book update(Book entity) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
-                iDaoBook.change(entity);
-                session.commit();
-                return entity;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Long remove(Long id) {
-        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
-            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
-            try (SqlSession session = build.openSession()) {
-                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
-                iDaoBook.remove(id);
-                session.commit();
-                return id;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+public class MyBatisDaoBook extends MyBatisDao<Book, IMapperBook> implements IDaoBook {
+//    @Override
+//    public Book create(Book entity) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
+//                iDaoBook.insert(entity);
+//                session.commit();
+//                return entity;
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Book read(Long id) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
+//                return iDaoBook.read(id);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public List<Book> readAll() {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
+//                return iDaoBook.readAll();
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Book update(Book entity) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
+//                iDaoBook.change(entity);
+//                session.commit();
+//                return entity;
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Long remove(Long id) {
+//        try (InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml")){
+//            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(inputStream);
+//            try (SqlSession session = build.openSession()) {
+//                IMapperBook iDaoBook = session.getMapper(IMapperBook.class);
+//                iDaoBook.remove(id);
+//                session.commit();
+//                return id;
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Override
     public void createConnectionToAuthors(Long bookId, Long authorId) {

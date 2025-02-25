@@ -78,4 +78,16 @@ public class BorrowingReservation {
     public void setLibrarianId(Long librarianId) {
         this.librarianId = librarianId;
     }
+
+    @Override
+    public String toString() {
+        return "BorrowingReservation{" +
+                "id=" + id +
+                ", from=" + from +
+                ", to=" + to +
+                ", readerId=" + readerId +
+                ", bookId=" + bookId +
+                ", librarianId=" + librarianId +
+                '}';
+    }
 }

@@ -1,10 +1,7 @@
 package solvd.laba.library;
 
 import solvd.laba.library.model.*;
-import solvd.laba.library.mybatis.MyBatisDaoAuthor;
-import solvd.laba.library.mybatis.MyBatisDaoBook;
-import solvd.laba.library.mybatis.MyBatisDaoBookshelf;
-import solvd.laba.library.mybatis.MyBatisDaoRoom;
+import solvd.laba.library.mybatis.*;
 import solvd.laba.library.service.*;
 import solvd.laba.library.sql.*;
 
@@ -20,12 +17,39 @@ public class Main {
 //        roomService.createRoom(room);
 //        System.out.println(room.getId());
 //        List<Room> rooms = roomService.readRooms();
+        MyBatisDaoBookshelf daoBookshelf = new MyBatisDaoBookshelf();
+        MyBatisDaoBook daoBook = new MyBatisDaoBook();
+        MyBatisDaoAuthor daoAuthor = new MyBatisDaoAuthor();
+        MyBatisDaoGenre daoGenre = new MyBatisDaoGenre();
         Bookshelf bookshelf = new Bookshelf();
         bookshelf.setAvgCapacity(250);
-        new BookshelfService(new MyBatisDaoBookshelf(), new MyBatisDaoBook()).createBookshelf(bookshelf);
-//        System.out.println("debug");
-        new AuthorService(new MyBatisDaoAuthor()).removeAuthor(1L);
+        BookshelfService bookshelfService = new BookshelfService(daoBookshelf, daoBook);
+        bookshelfService.createBookshelf(bookshelf);
+        bookshelfService.removeBookshelf(bookshelf.getId());
 
+//        new BookService(daoBook, null, daoGenre, daoAuthor);
+//        new RoomService(new MyBatisDaoRoom(), null, daoBookshelf);
+//        System.out.println("debug");
+        Author author1 = new Author();
+        author1.setName("William");
+        author1.setSurname("Error");
+        AuthorService authorService = new AuthorService(daoAuthor);
+        authorService.createAuthor(author1);
+        System.out.println(authorService.readAuthor(author1.getId()));
+        author1.setSurname("Shakespear");
+        authorService.updateAuthor(author1);
+        authorService.readAuthors().forEach(System.out::println);
+        authorService.removeAuthor(author1.getId());
+
+        Genre genre1 = new Genre();
+        genre1.setName("dra");
+        GenreService genreService = new GenreService(daoGenre);
+        genreService.createGenre(genre1);
+        System.out.println(genreService.readGenre(genre1.getId()));
+        genre1.setName("drama");
+        genreService.updateGenre(genre1);
+        genreService.readGenres().forEach(System.out::println);
+        genreService.removeGenre(genre1.getId());
 
 //        Room room = new Room();
 //        room.setPurpose("Main room");
